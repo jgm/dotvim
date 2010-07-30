@@ -1,5 +1,4 @@
-set runtimepath+=NERD_tree
-set runtimepath+=snipMate
+set runtimepath+=~/.vim/addons/snipMate,~/.vim/addons/snipMate/after,~/.vim/addons/NERD_tree
 
 if filereadable(expand("~/.vim/abbrevs.vim"))
     source ~/.vim/abbrevs.vim
