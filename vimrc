@@ -1,3 +1,5 @@
+set runtimepath+=~/.vim/NERD_tree
+
 if filereadable(expand("~/.vim/abbrevs.vim"))
     source ~/.vim/abbrevs.vim
 endif
