@@ -1,3 +1,12 @@
+
+snippet frame
+	\begin{frame}\frametitle{${1:title}}
+		${2}
+	\end{frame}
+snippet block 
+	\begin{block}{${1:title}}
+		${2}
+	\end{block}
 # \begin{}...\end{}
 snippet begin
 	\begin{${1:env}}
@@ -18,6 +27,16 @@ snippet gat
 	\begin{gather${1:ed}}
 		${2}
 	\end{gather$1}
+# Quotation
+snippet quo
+	\begin{quote}
+		${1}
+	\end{quote}
+# Exe
+snippet exe
+	\begin{exe}
+		\ex ${1}
+	\end{exe}
 # Equation
 snippet eq
 	\begin{equation}
