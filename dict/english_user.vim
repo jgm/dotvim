@@ -1,0 +1,34 @@
+syn case match
+syn keyword GoodWord transparent Tarski
+syn keyword GoodWord transparent Hartry
+syn keyword GoodWord transparent SEP
+syn keyword GoodWord transparent Russellian
+syn keyword GoodWord transparent F
+syn keyword GoodWord transparent Fregean
+syn keyword GoodWord transparent Jeff
+syn keyword GoodWord transparent Okay
+syn keyword GoodWord transparent R
+syn keyword GoodWord transparent Desdemona
+syn keyword GoodWord transparent Othello
+syn keyword GoodWord transparent Davidson
+syn keyword GoodWord transparent Quine
+syn keyword GoodWord transparent Chomsky
+syn keyword GoodWord transparent S
+syn keyword GoodWord transparent E
+syn keyword GoodWord transparent M
+syn keyword GoodWord transparent Harman
+syn keyword GoodWord transparent Gil
+syn keyword GoodWord transparent Cartwright
+syn keyword GoodWord transparent Frege
+syn case ignore
+syn keyword GoodWord transparent p
+syn keyword GoodWord transparent abstracta
+syn keyword GoodWord transparent gasoline
+syn keyword GoodWord transparent substitutional
+syn keyword GoodWord transparent nonidentity
+syn keyword GoodWord transparent balked
+syn keyword GoodWord transparent multi
+syn keyword GoodWord transparent pw
+syn keyword GoodWord transparent gotten
+syn keyword GoodWord transparent coheres
+syn keyword GoodWord transparent iff

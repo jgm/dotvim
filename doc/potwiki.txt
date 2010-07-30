@@ -1,0 +1,204 @@
+*potwiki.txt*   Plain Old Text Wiki                                  v1.25
+
+
+                        POTWIKI REFERENCE MANUAL~
+
+
+Maintaining a Wiki of plain text files with the plugin "potwiki"
+
+
+==============================================================================
+CONTENT                                                     *potwiki-contents* 
+
+    Installation        : |potwiki-install|
+    potwiki intro       : |potwiki|
+    Requirements        : |potwiki-requirements|
+    potwiki commands    : |potwiki-commands|
+    Customization       : |potwiki-customize|
+    Bugs                : |potwiki-bugs|
+    Todo list           : |potwiki-todo|
+
+==============================================================================
+1. potwiki Installation                                     *potwiki-install*
+
+    In order to install the plugin, place the potwiki.vim file into a plugin
+    directory in your runtime path (please see |add-global-plugin| and
+    |'runtimepath'|).
+
+    |potwiki| may be customized by setting variables, creating maps, and
+    specifying event handlers.  Please see |potwiki-customize| for more
+    details.
+
+                                                           *potwiki-auto-help*
+    This help file is automagically generated when the |potwiki| script is
+    loaded for the first time.
+
+==============================================================================
+1.1. potwiki requirements                              *potwiki-requirements*
+
+    potwiki should work with vim 6.0 or later versions.
+
+==============================================================================
+2. potwiki intro                                                   *potwiki*
+                                                       *wiki*  *potwiki-intro*
+
+   potwiki provides functions and mappings for maintaining a Wiki of plain
+   text files.
+
+   The Wiki is a collection of text files in a single directory. These files
+   can contain hyper links to each other in the form of WikiWords.
+
+   A WikiWord is a word which starts with an upper case letter and contains
+   at least one lower case letter and another upper case letter in this
+   order -- it's in 'camel case', e.g.
+
+     ThisIsAWikiWord
+
+   Such a WikiWord links to a file of exactly the same name in your
+   Wiki directory.
+
+   By default you can also use digits and underscore in your WikiWords.
+   You can customize this to your needs. |potwiki-customize|
+
+   When opening a Wiki file potwiki scans your Wiki directory to find
+   which WikiWords are valid links. WikiWords without a corresponding
+   file are highlighted as errors (otherwise it doesn't matter).
+
+   The default mappings are defined as follow (By default, <Leader> stands
+   for '\'. See |Leader| for more info) :
+
+   <Leader>ww   - open the Wiki HomePage
+   <Leader>wi   - open the Wiki index
+   <Leader>wf   - follow a WikiWord (can be used in any buffer!)
+   <Leader>we   - edit a Wiki file
+
+   The following mappings are present when editing a Wiki file:
+
+   <Leader><Leader> - close the file
+   <CR>             - follow the WikiWord under the cursor
+   <Tab>            - move to the next WikiWord
+   <BS>             - move to the previous WikiWord
+   <Leader>wr       - reload WikiWords
+
+   See |potwiki-mappings-override| and |potwiki-options| to learn how to
+   override those default mappings.
+
+==============================================================================
+3. potwiki commands	                                    *potwiki-commands*
+
+    See |potwiki-intro| for default mapping.
+
+    Currently potwiki does not define any commands.
+
+==============================================================================
+4. potwiki customization                                  *potwiki-customize*
+
+4.1. General configuration      ~
+--------------------------
+                                          *loaded_potwiki*  *potwiki-disable*
+    You can disable this script by putting the following line in your |vimrc| >
+      let loaded_potwiki = 1
+<
+
+    You can define your own color scheme for potwiki highlighting, by setting
+    |highlight| on PotwikiWord and PotwikiWordNotFound groups. For example: 
+>
+      highlight PotwikiWord          guifg=darkcyan
+      highlight PotwikiWordNotFound  guibg=Red guifg=Yellow
+<
+    When a wiki file is edited the 'filetype' and 'syntax' options are set 
+    to 'potwiki'. You can use autocommands for this filetype to customize
+    your wiki editing. For exmaple:
+>
+      :au Filetype potwiki set sts=4
+<
+    If you want to be able to switch the highlighting on and off with
+>
+      :syntax on | enable | off
+<
+    put the following line in a file called 'potwiki.vim' in your syntax
+    directory (usually ~/.vim/syntax):
+>
+      call PotwikiSyntax()
+<
+
+4.2. Mapping documentation:      ~
+---------------------------
+                                                   *potwiki-mappings-override*
+    By default, a global mapping is defined for some commands.  User-provided
+    mappings can be used instead by mapping to <Plug>CommandName. This is
+    especially useful when these mappings collide with other existing mappings
+    (vim will warn of this during plugin initialization, but will not clobber
+    the existing mappings).
+
+    For instance, to override the default mapping for :PotwikiHome to set it to
+    \wh, add the following to the |vimrc|:
+>
+      nmap \wh <Plug>PotwikiHome
+<
+4.3. Options documentation:      ~
+---------------------------
+                                                             *potwiki-options*
+    Several variables are checked by the script to customize potwiki
+    behavior. You can set them using let in your |vimrc| file.
+    Example:
+>
+        let potwiki_home = "$HOME/MyWiki/HomePage"
+<
+    potwiki_suffix                                            *potwiki_suffix*
+      This variable contains a suffix appended to the names of your
+      Wikifiles.
+      default: ''
+
+    potwiki_home                                                *potwiki_home*
+      This variable contains the filename of your Wiki HomePage.
+      default: $HOME/Wiki/HomePage + potwiki_suffix
+
+    potwiki_home_dir                                        *potwiki_home_dir*
+      This variable contains the path of your Wiki directory.
+      default: the directory containing the file set in potwiki_home.
+
+    potwiki_upper                                              *potwiki_upper*
+      Upper case characters for WikiWords. Uses the syntax of [ ] atoms
+      in regular expressions. 
+      default: 'A-Z'
+
+    potwiki_lower                                              *potwiki_lower*
+      Lower case characters for WikiWords. Uses the syntax of [ ] atoms
+      in regular expressions. 
+      default: 'a-z'
+
+    potwiki_other                                              *potwiki_other*
+      Non-letter characters for WikiWords. Uses the syntax of [ ] atoms
+      in regular expressions. 
+      default: '0-9_'
+
+    potwiki_autowrite                                      *potwiki_autowrite*
+      If this is non-zero potwiki always writes a Wiki file when it
+      is closed by <Plug>PotwikiClose or when you follow another WikiWord.
+      (The file is only written if it has been changed.)
+
+    potwiki_ignore                                            *potwiki_ignore*
+      A comma-separated list of words you don't want potwiki to
+      highlight. Don't include any whitespace in this list.
+      default: ''
+
+==============================================================================
+6. potwiki bugs                                                *potwiki-bugs*
+
+    Please contact me <edwin.steiner@gmx.net> if you find any bugs in
+    potwiki. I'm sure there are enough of them.
+
+    Include 'potwiki' in the subject line when contacting me.
+
+==============================================================================
+7. potwiki TODO list                                           *potwiki-todo*
+
+    Please contact me <edwin.steiner@gmx.net> if you have suggestions
+    for improving potwiki.
+
+    Include 'potwiki' in the subject line when contacting me.
+
+==============================================================================
+
+ vim:tw=78:ts=8:ft=help:norl:

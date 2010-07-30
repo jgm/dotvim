@@ -1,0 +1,38 @@
+*fthaskell.txt*  For Vim version 7.0.  Last change: 2006 Dec 18
+
+
+	HASKELL FILETYPE PLUGIN		by Arthur van Leeuwen
+
+
+Haskell filetype				*haskell*
+
+1. Docs for the Haskell filetype plugin.	|ft-haskell-plugin|
+
+Also see |autocmd.txt|.
+
+==============================================================================
+HASKELL							*ft-haskell-plugin*
+
+Allows for easier editing of Haskell source files. There is a preliminary
+foldexpr, but it is rather slow.
+
+Options:
+'comments'		is set to allow -- and {- -} style comments
+'formatoptions'		is set to break comment lines but not others
+'cpoptions'		is set to not match \( as special, so lambdas work
+'includeexpr'		is set so that gf works on import lines
+
+Local mappings:
+<LocalLeader>t	    	if ghci is in the path, puts the type of the 
+			identifier at the start of the line into the 
+                        previous line, overwriting that line if it is 
+                        a type declaration for that identifier. Will
+                        only consider the declarations that are already
+                        written to disk!
+
+Variables:
+g:haskell_folding	If set, enables the slow foldexpr
+g:ftplugin_haskell_source_path
+			Adds the given path to the search path for gf
+
+ vim:tw=78:ts=8:ft=help:norl:
