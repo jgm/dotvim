@@ -1,8 +1,18 @@
+" Activate snipMate
 set runtimepath+=~/.vim/addons/snipMate,~/.vim/addons/snipMate/after
+
+" Activate NERD_tree
 set runtimepath+=~/.vim/addons/NERD_tree
+
+" Activate haskellmode
 set runtimepath+=~/.vim/addons/haskellmode
+
+" Active utl
 set runtimepath+=~/.vim/addons/utl
+
+" Activate fuzzyfinder
 set runtimepath+=~/.vim/addons/fuzzyfinder
+map <leader>f <ESC>:FufFile **/<CR>
 
 if filereadable(expand("~/.vim/abbrevs.vim"))
     source ~/.vim/abbrevs.vim
