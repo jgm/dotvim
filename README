@@ -1,0 +1,9 @@
+This repository contains the contents of my .vim directory.
+
+My .vimrc looks like this:
+
+    " put platform-specific settings here
+    " and then source the common configuration file
+    source ~/.vim/vimrc
+
+
