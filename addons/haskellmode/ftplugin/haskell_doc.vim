@@ -2,7 +2,7 @@
 " use haddock docs and index files
 " show documentation, complete & qualify identifiers 
 "
-" (Claus Reinke; last modified: 30/04/2009)
+" (Claus Reinke; last modified: 17/06/2009)
 " 
 " part of haskell plugins: http://projects.haskell.org/haskellmode-vim
 " please send patches to <claus.reinke@talk21.com>
@@ -66,14 +66,7 @@ if !exists("g:haddock_browser")
   echoerr s:scriptname." WARNING: please set g:haddock_browser!"
 endif
 
-if (!exists("g:ghc") || !executable(g:ghc)) 
-  if !executable('ghc') 
-    echoerr s:scriptname." can't find ghc. please set g:ghc, or extend $PATH"
-    finish
-  else
-    let g:ghc = 'ghc'
-  endif
-endif    
+if !haskellmode#GHC() | finish | endif
 
 if (!exists("g:ghc_pkg") || !executable(g:ghc_pkg))
   let g:ghc_pkg = substitute(g:ghc,'\(.*\)ghc','\1ghc-pkg','')
@@ -85,13 +78,17 @@ elseif executable(g:ghc_pkg)
 " try to figure out location of html docs
 " first choice: where the base docs are (from the first base listed)
   let [field;x] = split(system(g:ghc_pkg . ' field base haddock-html'),'\n')
-  let field = substitute(field,'haddock-html: \(.*\)libraries.base','\1','')
+  " path changes in ghc-6.12.*
+  " let field = substitute(field,'haddock-html: \(.*\)libraries.base','\1','')
+  let field = substitute(field,'haddock-html: \(.*\)lib\(raries\)\?.base.*$','\1','')
   let field = substitute(field,'\\','/','g')
-  let alternate = substitute(field,'html','doc/html','')
-  if isdirectory(field)
-    let s:docdir = field
-  elseif isdirectory(alternate)
+  " let alternate = substitute(field,'html','doc/html','')
+  " changes for ghc-6.12.*: check for doc/html/ first
+  let alternate = field.'doc/html/'
+  if isdirectory(alternate)
     let s:docdir = alternate
+  elseif isdirectory(field)
+    let s:docdir = field
   endif
 else
   echoerr s:scriptname." can't find ghc-pkg (set g:ghc_pkg ?)."
@@ -102,8 +99,7 @@ if !exists('s:docdir') || !isdirectory(s:docdir)
   let s:ghc_libdir = substitute(system(g:ghc . ' --print-libdir'),'\n','','')
   let location1a = s:ghc_libdir . '/doc/html/'
   let location1b = s:ghc_libdir . '/doc/'
-  let s:ghc_version = substitute(system(g:ghc . ' --numeric-version'),'\n','','')
-  let location2 = '/usr/share/doc/ghc-' . s:ghc_version . '/html/' 
+  let location2 = '/usr/share/doc/ghc-' . haskellmode#GHC_Version() . '/html/' 
   if isdirectory(location1a)
     let s:docdir = location1a
   elseif isdirectory(location1b)
@@ -164,7 +160,7 @@ endif
 
 command! DocSettings call DocSettings()
 function! DocSettings()
-  for v in ["g:haddock_browser","g:haddock_browser_callformat","g:haddock_docdir","g:haddock_indexfiledir","s:ghc_libdir","s:ghc_version","s:docdir","s:libraries","s:guide","s:haddock_indexfile"]
+  for v in ["g:haddock_browser","g:haddock_browser_callformat","g:haddock_docdir","g:haddock_indexfiledir","s:ghc_libdir","g:ghc_version","s:docdir","s:libraries","s:guide","s:haddock_indexfile"]
     if exists(v)
       echo v '=' eval(v)
     else
@@ -318,7 +314,7 @@ function! DocIndex()
   let files   = split(globpath(s:libraries,'doc-index*.html'),'\n')
   let g:haddock_index = {}
   call ProcessHaddockIndexes2(s:libraries,files)
-  if GHC_VersionGE([6,8,2])
+  if haskellmode#GHC_VersionGE([6,8,2])
     if &shell =~ 'sh' " unix-type shell
       let s:addon_libraries = split(system(g:ghc_pkg . ' field \* haddock-html'),'\n')
     else " windows cmd.exe and the like
@@ -465,7 +461,7 @@ function! MkHaddockModuleIndex()
       let html = dict[module]
       let html   = substitute(html  ,'#.*$','','')
       let module = substitute(module,'\[.\]','','')
-      let ml = matchlist(html,'libraries/\([^\/]*\)\/')
+      let ml = matchlist(html,'libraries/\([^\/]*\)[\/]')
       if ml!=[]
         let [_,package;x] = ml
         let g:haddock_moduleindex[module] = {'package':package,'html':html}
@@ -818,20 +814,3 @@ function! HaddockIndexLookup(name)
   return g:haddock_index[a:name]
 endfunction
 
-" copied from ghc.vim :-( should we move everything to using autoload instead?
-" we query the ghc version here, as we don't otherwise need it..
-function! GHC_VersionGE(target)
-  let s:ghc_version = substitute(system(g:ghc . ' --numeric-version'),'\n','','')
-  let current = split(g:ghc_version, '\.' )
-  let target  = a:target
-  for i in current
-    if ((target==[]) || (i>target[0]))
-      return 1
-    elseif (i==target[0])
-      let target = target[1:]
-    else
-      return 0
-    endif
-  endfor
-  return 1
-endfunction
