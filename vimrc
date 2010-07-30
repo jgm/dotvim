@@ -1,6 +1,7 @@
 set runtimepath+=~/.vim/addons/snipMate,~/.vim/addons/snipMate/after
 set runtimepath+=~/.vim/addons/NERD_tree
 set runtimepath+=~/.vim/addons/haskellmode
+set runtimepath+=~/.vim/addons/utl
 
 if filereadable(expand("~/.vim/abbrevs.vim"))
     source ~/.vim/abbrevs.vim
