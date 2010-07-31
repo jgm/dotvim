@@ -4,6 +4,9 @@
 " Set leader to comma.
 let mapleader = ","
 
+" Don't redraw screen while executing macros.
+set nolazyredraw
+
 " Behave intelligently for type of file.
 filetype plugin indent on
 
@@ -64,9 +67,10 @@ set mat=5  " for half a sec
 
 " Tabs:  default is two spaces.
 set expandtab
-set tabstop=2
+set tabstop=8      " real tabs are 8
 set softtabstop=2
 set shiftwidth=2   " for autoindent
+set shiftround     " indent to a multiple of shiftwidth
 
 " Reflow paragraphs intelligently. using 'par'.
 set formatprg="par -h -w78 -B=.,\?_A_a "
@@ -189,6 +193,20 @@ command -nargs=1 Find call SearchWiki(<f-args>)
 " Read abbreviations file if present.
 if filereadable(expand("~/.vim/abbrevs.vim"))
     source ~/.vim/abbrevs.vim
+endif
+
+"-----------------------------------------------------------------------
+" GUI Settings {
+if has("gui_running")
+  colorscheme desert256
+  set columns=80
+  " set guifont=DejaVu\ Sans\ Mono\ 8  " set in ~/.vimrc
+  set guioptions=ce 
+  "              ||
+  "              |+-- use simple dialogs rather than pop-ups
+  "              +  use GUI tabs, not console style tabs
+  set lines=40
+  set mousehide " hide the mouse cursor when typing
 endif
 
 "-----------------------------------------------------------------------
