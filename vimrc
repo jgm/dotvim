@@ -223,10 +223,9 @@ set runtimepath+=~/.vim/addons/NERD_tree
 map <F2> :NERDTreeToggle<CR>
 
 " Activate haskellmode
-set runtimepath+=~/.vim/addons/haskellmode
+" set runtimepath+=~/.vim/addons/haskellmode
+" au Bufenter *.hs compiler ghc
 let g:proj_flags="imstvcg" 
-" use ghc functionality for haskell files
-au Bufenter *.hs compiler ghc
 " configure browser for haskell_doc.vim
 let g:haddock_browser = "/usr/bin/firefox"
 let g:haddock_docdir = "/home/jgm/ghc-6.12.1/share/doc/ghc"
