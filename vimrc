@@ -220,7 +220,7 @@ set runtimepath+=~/.vim/addons/snipMate,~/.vim/addons/snipMate/after
 
 " Activate NERD_tree (file browser)
 set runtimepath+=~/.vim/addons/NERD_tree
-map <F2> :NERDTreeToggle<CR>
+map <leader>n :NERDTreeToggle<CR>
 
 " Activate haskellmode
 " set runtimepath+=~/.vim/addons/haskellmode
