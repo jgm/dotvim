@@ -1,8 +1,11 @@
+__BEGIN__
 ------------------------------------------------------------------------------
+" new items marked *N* , corrected items marked *C*
 " searching
 /joe/e                      : cursor set to End of match
 /joe/e+1                    : cursor set to End of match plus 1
 /joe/s-2                    : cursor set to Start of match minus 2
+/joe/+3                     : find joe move cursor 3 lines down
 /^joe.*fred.*bill/          : normal
 /^[A-J]\+/                  : search for lines beginning with one or more A-J
 /begin\_.*end               : search over possible multiple lines
@@ -40,9 +43,10 @@
 " multiple file search better but cheating
 :bufdo %s/searchstr/&/gic   : say n and then a to stop
 " How to search for a URL without backslashing
-?http://www.vim.org/        : search BACKWARDS!!! clever huh!
+?http://www.vim.org/        : (first) search BACKWARDS!!! clever huh!
 " Specify what you are NOT searching for (vowels)
 /\c\v([^aeiou]&\a){4}       : search for 4 consecutive consonants
+/\%>20l\%<30lgoat           : Search for goat between lines 20 and 30 *N*
 ----------------------------------------
 #substitution
 :%s/fred/joe/igc            : general substitute command
@@ -56,7 +60,8 @@
 " deleting empty lines
 :%s/^\n\{3}//               : delete blocks of 3 empty lines
 :%s/^\n\+/\r/               : compressing empty lines
-%s#<[^>]\+>##g              : delete html tags, leave text
+:%s#<[^>]\+>##g             : delete html tags, leave text (non-greedy)
+:%s#<\_.\{-1,}>##g          : delete html tags possibly multi-line (non-greedy)
 " IF YOU ONLY WANT TO KNOW ONE THING
 :'a,'bg/fred/s/dick/joe/igc : VERY USEFUL
 " duplicating columns
@@ -75,6 +80,7 @@
 :help /\{-}                 : help non-greedy
 " substitute using a register
 :s/fred/<c-r>a/g            : sub "fred" with contents of register "a"
+:s/fred/<c-r>asome_text<c-r>s/g  
 :s/fred/\=@a/g              : better alternative as register not displayed
 " multiple commands on one line
 :%s/\f\+\.gif\>/\r&\r/g | v/\.gif$/d | %s/gif/jpg/
@@ -121,7 +127,7 @@
 " Substitute inside substitute
 :%s/.*/\='cp '.submatch(0).' all/'.substitute(submatch(0),'/','_','g')/
 ----------------------------------------
-" global command display (see tip 227)
+" global command display 
 :g/gladiolli/#              : display with line numbers (YOU WANT THIS!)
 :g/fred.*joe.*dick/         : display all lines fred,joe & dick
 :g/\<fred\>/                : display all lines fred but not freddy
@@ -137,11 +143,13 @@
 :g/<input\|<form/p          : ORing
 :g/^/put_                   : double space file (pu = put)
 :g/^/m0                     : Reverse file (m = move)
-:'a,'b/^/m'b                : Reverse a section a to b
+:'a,'bg/^/m'b               : Reverse a section a to b
 :g/^/t.                     : duplicate every line
 :g/fred/t$                  : copy lines matching fred to EOF
 :g/stage/t'a                : copy lines matching stage to marker a
 :g/\(^I[^^I]*\)\{80}/d      : delete all lines containing at least 80 tabs
+" perform a substitute on every other line
+:g/^/ if line('.')%2|s/^/zz / 
 " match all lines containing "somestr" between markers a & b
 " copy after line containing "otherstr"
 :'a,'bg/somestr/co/otherstr/ : co(py) or mo(ve)
@@ -152,15 +160,23 @@
 :.,$g/^\d/exe "norm! \<c-a>": increment numbers
 :'a,'bg/\d\+/norm! ^A       : increment numbers
 " storing glob results (note must use APPEND) you need to empty reg a first with qaq. 
+"save results to a register/paste buffer
 :g/fred/y A                 : append all lines fred to register a
-:'a,'b g/^Error/ . w >> errors.txt
+:g/fred/y A | :let @*=@a    : put into paste buffer
+:let @a=''|g/Barratt/y A |:let @*=@a
+" filter lines to a file (file must already exist)
+:'a,'bg/^Error/ . w >> errors.txt
 " duplicate every line in a file wrap a print '' around each duplicate
 :g/./yank|put|-1s/'/"/g|s/.*/Print '&'/
 " replace string with contents of a file, -d deletes the "mark"
-:g/^MARK$/r tmp.ex | -d
+:g/^MARK$/r tmp.txt | -d
 " display prettily
 :g/<pattern>/z#.5           : display with context
 :g/<pattern>/z#.5|echo "=========="  : display beautifully
+" Combining g// with normal mode commands
+:g/|/norm 2f|r*                      : replace 2nd | with a star
+"send output of previous global command to a new window
+:nmap <F3>  :redir @a<CR>:g//<CR>:redir END<CR>:new<CR>:put! a<CR><CR>
 ----------------------------------------
 " Global combined with substitute (power editing)
 :'a,'bg/fred/s/joe/susan/gic :  can use memory to extend matching
@@ -168,6 +184,9 @@
 ----------------------------------------
 " Find fred before beginning search for joe
 :/fred/;/joe/-2,/sid/+3s/sally/alley/gIC
+----------------------------------------
+" create a new file for each line of file eg 1.txt,2.txt,3,txt etc
+:g/^/exe ".w ".line(".").".txt"
 ----------------------------------------
 " Absolutely essential
 ----------------------------------------
@@ -181,6 +200,7 @@ matchit.vim         : % now matches tags <tr><td><script> <?php etc
 /<C-R><C-W>         : Pull <cword> onto search/command line
 /<C-R><C-A>         : Pull <CWORD> onto search/command line
 :set ignorecase     : you nearly always want this
+:set smartcase      : overrides ignorecase if uppercase used in search string (cool)
 :syntax on          : colour syntax in Perl,HTML,PHP etc
 :h regexp<C-D>      : type control-D and get a list all help topics containing
                       regexp (plus use TAB to Step thru list)
@@ -189,16 +209,28 @@ matchit.vim         : % now matches tags <tr><td><script> <?php etc
 :nmap ,s :source $VIM/_vimrc
 :nmap ,v :e $VIM/_vimrc
 ----------------------------------------
-#VISUAL MODE (easy to add other HTML Tags)
+"VISUAL MODE (easy to add other HTML Tags)
 :vmap sb "zdi<b><C-R>z</b><ESC>  : wrap <b></b> around VISUALLY selected Text
 :vmap st "zdi<?= <C-R>z ?><ESC>  : wrap <?=   ?> around VISUALLY selected Text
 ----------------------------------------
+"vim 7 tabs
+vim -p fred.php joe.php             : open files in tabs
+:tabe fred.php                      : open fred.php in a new tab
+:tab ball                           : tab open files
+" vim 7 forcing use of tabs from .vimrc
+:nnoremap gf <C-W>gf
+:cab      e  tabe
+
+----------------------------------------
 " Exploring
+:e .                            : file explorer
 :Exp(lore)                      : file explorer note capital Ex
 :Sex(plore)                     : file explorer in split window
+:browse e                       : windows style browser
 :ls                             : list of buffers
 :cd ..                          : move to parent directory
 :args                           : list of files
+:args *.php                     : open list of files
 :lcd %:p:h                      : change to directory of current file
 :autocmd BufEnter * lcd %:p:h   : change to directory of current file automatically (put in _vimrc)
 ----------------------------------------
@@ -240,8 +272,8 @@ ggg?G                           : rot13 whole file (quicker for large file)
 " Markers & moving about
 '.               : jump to last modification line (SUPER)
 `.               : jump to exact spot in last modification line
-g;               : cycle thru recent changes (oldest first) (new in vim6.3)
-g,               : reverse direction (new in vim6.3)
+g;               : cycle thru recent changes (oldest first)
+g,               : reverse direction 
 :changes
 :h changelist    : help for above
 <C-O>            : retrace your movements in file (starting from most recent)
@@ -251,15 +283,16 @@ g,               : reverse direction (new in vim6.3)
 :history         : list of all your commands
 :his c           : commandline history
 :his s           : search history
-q/               : Search history Window (puts you in full edit mode)
-q:               : commandline history Window (puts you in full edit mode)
-:<C-F>           : history Window
+q/               : Search history Window (puts you in full edit mode) (exit CTRL-C)
+q:               : commandline history Window (puts you in full edit mode) (exit CTRL-C)
+:<C-F>           : history Window (exit CTRL-C)
 ----------------------------------------
-" Abbreviations & maps
-:map   <f7>   :'a,'bw! c:/aaa/x
-:map   <f8>   :r c:/aaa/x
-:map   <f11>  :.w! c:/aaa/xr<CR>
-:map   <f12>  :r c:/aaa/xr<CR>
+" Abbreviations & Maps
+" Following 4 maps enable text transfer between VIM sessions
+:map   <f7>   :'a,'bw! c:/aaa/x       : save text to file x
+:map   <f8>   :r c:/aaa/x             : retrieve text 
+:map   <f11>  :.w! c:/aaa/xr<CR>      : store current line
+:map   <f12>  :r c:/aaa/xr<CR>        : retrieve current line
 :ab php          : list of abbreviations beginning php
 :map ,           : list of maps beginning ,
 " allow use of F10 for mapping (win32)
@@ -273,6 +306,12 @@ set wak=no       : :h winaltkeys
 <SILENT>         : No hanging shell window
 #display RGB colour under the cursor eg #445588
 :nmap <leader>c :hi Normal guibg=#<c-r>=expand("<cword>")<cr><cr>
+map <f2> /price only\\|versus/ :in a map need to backslash the \
+# type table,,, to get <table></table>       ### Cool ###
+imap ,,, <esc>bdwa<<esc>pa><cr></<esc>pa><esc>kA
+----------------------------------------
+" Simple PHP debugging display all variables yanked into register a
+iab phpdb exit("<hr>Debug <C-R>a  ");
 ----------------------------------------
 " Using a register as a map (preload registers in .vimrc)
 :let @m=":'a,'bs/"
@@ -284,6 +323,7 @@ set wak=no       : :h winaltkeys
 "1p....          : retrieve numeric registers one by one
 :let @y='yy@"'   : pre-loading registers (put in .vimrc)
 qqq              : empty register "q"
+qaq              : empty register "a"
 ----------------------------------------
 " Useful tricks
 "ayy@a           : execute "Vim command" in a text file
@@ -291,12 +331,15 @@ yy@"             : same thing using unnamed register
 u@.              : execute command JUST typed in
 ----------------------------------------
 " Get output from other commands (requires external programs)
-:r!ls.exe        : reads in output of ls
+:r!ls            : reads in output of ls
+:r !grep "^ebay" file.txt  : grepping in content   *N*
+:20,25 !rot13    : rot13 lines 20 to 25   *N*
 !!date           : same thing (but replaces/filters current line)
 " Sorting with external sort
 :%!sort -u       : use an external program to filter content
 :'a,'b!sort -u   : use an external program to filter content
 !1} sort -u      : sorts paragraph (note normal mode!!)
+:g/^$/;,/^$/-1!sort : Sort each block (note the crucial ;)
 ----------------------------------------
 " Multiple Files Management (Essential)
 :bn              : goto next buffer
@@ -314,6 +357,7 @@ u@.              : execute command JUST typed in
 :sav %:s/fred/joe/           : do a substitute on file name
 :sav %:s/fred/joe/:r.bak2    : do a substitute on file name & ext.
 :!mv % %:r.bak   : rename current file (DOS use Rename or DEL)
+:help filename-modifiers
 :e!              : return to unmodified file
 :w c:/aaa/%      : save file elsewhere
 :e #             : edit alternative file (also cntrl-^)
@@ -352,7 +396,10 @@ V}
 4)Complete as follows
 :'<,'>norm @q
 ----------------------------------------
-" Visual is the newest and usually the BEST editing mode
+"combining a recording with a map (to end up in command mode)
+:nnoremap ] @q:w!<bar>bd
+----------------------------------------
+" Visual is the newest and usually the most intuitive editing mode
 " Visual basics
 v                               : enter visual mode
 V                               : visual mode whole line
@@ -363,6 +410,7 @@ o                               : navigate visual area
 V%                              : visualise what you match
 V}J                             : Join Visual block (great)
 V}gJ                            : Join Visual block w/o adding spaces
+`[v`]                           : Highlight last insert
 ----------------------------------------
 " Delete first 2 characters of 10 successive lines
 0<c-v>10j2ld
@@ -439,6 +487,7 @@ Vgq                          : current line
 :bufdo %s/foo/bar/e
 :windo %s/foo/bar/e
 :argdo exe '%!sort'|w!       : include an external command
+:bufdo exe "normal @q" | w   : perform a recording on open files
 ----------------------------------------
 " Command line tricks
 gvim -h                    : help
@@ -495,7 +544,9 @@ In regular expressions you must backslash { (count)
 :let @a=@_              : clear register a
 :let @a=""              : clear register a
 :let @*=@a              : copy register a to paste buffer
-map   <f11> "qyy:let @q=@q."zzz"
+:let @*=@:              : copy last command to paste buffer
+:let @*=@/              : copy last search to paste buffer
+:let @*=@%              : copy current filename to paste buffer
 ----------------------------------------
 " help for help (USE TAB)
 :h quickref             : VIM Quick Reference Sheet (ultra)
@@ -504,6 +555,7 @@ map   <f11> "qyy:let @q=@q."zzz"
                         : Then use tab to step thru them
 :h ctrl<C-D>            : list help of all control keys
 :helpg uganda           : grep HELP Files use :cn, :cp to find next
+:helpgrep edit.*director: grep help using regexp
 :h :r                   : help for :ex command
 :h CTRL-R               : normal mode
 :h /\r                  : what's \r in a regexp (matches a <CR>)
@@ -636,17 +688,19 @@ endfunction
 " Digraphs (non alpha-numerics)
 :digraphs                         : display table
 :h dig                            : help
-i<C-K>e'                          : enters é
-i<C-V>233                         : enters é (Unix)
-i<C-Q>233                         : enters é (Win32)
+i<C-K>e'                          : enters Ã©
+i<C-V>233                         : enters Ã© (Unix)
+i<C-Q>233                         : enters Ã© (Win32)
 ga                                : View hex value of any character
 #Deleting non-ascii characters (some invisible)
+:%s/[\x00-\x1f\x80-\xff]/ /g      : type this as you see it
 :%s/[<C-V>128-<C-V>255]//gi       : where you have to type the Control-V
-:%s/[€-ÿ]//gi                     : Should see a black square & a dotted y
+:%s/[â¬-Ã¿]//gi                     : Should see a black square & a dotted y
 :%s/[<C-V>128-<C-V>255<C-V>01-<C-V>31]//gi : All pesky non-asciis
 :exec "norm /[\x00-\x1f\x80-\xff]/"        : same thing
 #Pull a non-ascii character onto search bar
 yl/<C-R>"                         :
+/[^a-zA-Z0-9_[:space:][:punct:]]  : search for all non-ascii
 ----------------------------------------
 " All file completions grouped (for example main_c.c)
 :e main_<tab>                     : tab completes
@@ -674,7 +728,9 @@ main_<C-X><C-F>                   : include NAME of file in text (insert mode)
 " change coloring scheme (any file in ~vim/vim??/colors)
 :colorscheme blue
 " Force HTML Syntax highlighting by using a modeline
-" vim:ft=html:
+# vim:ft=html:
+" Force syntax automatically (for a file with non-standard extension)
+au BufRead,BufNewFile */Content.IE?/* setfiletype html
 ----------------------------------------
 :set noma (non modifiable)        : Prevents modifications
 :set ro (Read Only)               : Protect a file from unintentional writes
@@ -724,6 +780,8 @@ zc                                : re-close fold
 :w %:r.cfm                        : change file extention to .cfm
 :!echo %:p                        : full path & file name
 :!echo %:p:h                      : full path only
+:!echo %:t                        : filename only
+:reg %                            : display filename
 <C-R>%                            : insert filename (insert mode)
 "%p                               : insert filename (normal mode)
 /<C-R>%                           : Search for file name in text
@@ -772,3 +830,27 @@ Closing tag >>>
 vim -c ":%s%s*%Cyrnfr)fcbafbe[Oenz(Zbbyranne%|:%s)[[()])-)Ig|norm Vg?"
 ----------------------------------------
 __END__
+----------------------------------------
+If you liked these please return to www.vim.org
+and vote for this tip (It does encourage me!!)
+Tip 305
+----------------------------------------
+Please email any errors, tips etc to
+david@rayninfo.co.uk
+----------------------------------------
+updated version at http://www.rayninfo.co.uk/vimtips.html
+----------------------------------------
+" Information Sources
+----------------------------------------
+www.vim.org
+comp.editors "VIM" newsgroup
+groups.yahoo.com/group/vim "VIM" specific newsgroup
+VIM Webring
+Vim Book
+Searchable VIM Doc
+VimTips PDF Version (New)
+----------------------------------------
+" : commands to neutralise < for HTML display and publish
+" use yy@" to execute following commands
+:w!|sav! vimtips.html|:/^__BEGIN__/,/^__END__/s#<#\<#g|:w!|/vimtips[f]tp/|:!vimtipsftp
+
