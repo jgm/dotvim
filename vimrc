@@ -237,4 +237,6 @@ set runtimepath+=~/.vim/addons/utl
 set runtimepath+=~/.vim/addons/fuzzyfinder
 map <leader>f <ESC>:FufFile **/<CR>
 
+" Activate vim-fugitive
+set runtimepath+=~/.vim/addons/vim-fugitive
 
