@@ -29,5 +29,9 @@ syn region Comment start=/\^\[/ skip=/\[[^]]*\]/  end=/\]/
 " code blocks - FIX: captures continuations on lists
 " syn region Operator start=/^\s*\n\(    \|\t\)/ end=/.*\n\s*\n/
 
+" math
+syn region Operator start=/\$[^ \t\n$]/ end=/\$/ " inline math
+syn region Operator start=/\$\$/ end=/\$\$/ " display math
+
 let b:current_syntax = "text"
 
