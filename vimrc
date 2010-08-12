@@ -194,9 +194,9 @@ command -nargs=1 Find call SearchWiki(<f-args>)
 
 :function Markdown2PDF()
 :   let source = bufname("")
-:   let basename = substitute(source, "\.[^.]*$", "", "")
-:   exec ":r! markdown2pdf -o " . basename . ".pdf"
-:   exec "open " . basename . ".pdf"
+:   let basename = expand("%:r")
+:   exec ":! markdown2pdf " . source
+:   exec ":Utl openLink " . basename . ".pdf"
 :endfunction
 
 :map <Leader>p :call Markdown2PDF()<cr><cr>
