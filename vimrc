@@ -190,6 +190,17 @@ endfunction
 
 command -nargs=1 Find call SearchWiki(<f-args>)
 
+" Convert markdown buffer to PDF.
+
+:function Markdown2PDF()
+:   let source = bufname("")
+:   let basename = substitute(source, "\.[^.]*$", "", "")
+:   exec ":r! markdown2pdf -o " . basename . ".pdf"
+:   exec "open " . basename . ".pdf"
+:endfunction
+
+:map <Leader>p :call Markdown2PDF()<cr><cr>
+
 " Read abbreviations file if present.
 if filereadable(expand("~/.vim/abbrevs.vim"))
     source ~/.vim/abbrevs.vim
