@@ -112,10 +112,8 @@ nnoremap ` '
 " Don't force save when changing buffers
 set hidden
 
-" Don't try to auto-indent pastes.
-" NOTE: The following line causes snipmate not to work!
-" set paste
-set pastetoggle=<C-a>
+" NOTE: Snipmate won't work in paste mode!
+set pastetoggle=<F2> " formerly <C-a>
 
 " Remember more commands.
 set history=200
