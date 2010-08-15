@@ -177,9 +177,6 @@ map <leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
 " Type part of bufname after prompt.
 nmap zl :ls!<CR>:buf 
 
-" My local wiki.
-let potwiki_home = "$HOME/Wiki/WelcomePage"
-
 " Visit todo list
 nmap <Leader>td :e ~/Wiki/TodoList<CR>
 
@@ -247,6 +244,10 @@ set runtimepath+=~/.vim/addons/utl
 " Activate fuzzyfinder (fuzzy filename completion)
 set runtimepath+=~/.vim/addons/fuzzyfinder
 map <leader>f <ESC>:FufFile **/<CR>
+
+" Activate potwiki (personal wiki)
+set runtimepath+=~/.vim/addons/potwiki
+let potwiki_home = "$HOME/Wiki/WelcomePage"
 
 " Activate vim-fugitive
 set runtimepath+=~/.vim/addons/vim-fugitive
