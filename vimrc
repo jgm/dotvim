@@ -1,6 +1,9 @@
 "-----------------------------------------------------------------------
 " Basic configuration.
 
+filetype off " temporarily
+call pathogen#runtime_append_all_bundles()
+
 " Set leader to comma.
 let mapleader = ","
 
@@ -219,36 +222,13 @@ endif
 
 "-----------------------------------------------------------------------
 " Scripts and addons. Each is put in its own subdirectory of
-" ~/.vim/addons. To uninstall a plugin, just delete its subdirectory.
-" To deactivate an addon without uninstalling it, just comment out the
-" 'set runtimepath' line for it below.
+" ~/.vim/bundle. To uninstall a plugin, just delete its subdirectory.
 
-" Activate snipMate (Textmate-like snippets)
-set runtimepath+=~/.vim/addons/snipMate,~/.vim/addons/snipMate/after
-
-" Activate NERD_tree (file browser)
-set runtimepath+=~/.vim/addons/NERD_tree
+" NERD_tree (file browser)
 map <leader>n :NERDTreeToggle<CR>
 
-" Activate haskellmode
-" set runtimepath+=~/.vim/addons/haskellmode
-" au Bufenter *.hs compiler ghc
-let g:proj_flags="imstvcg" 
-" configure browser for haskell_doc.vim
-let g:haddock_browser = "/usr/bin/firefox"
-let g:haddock_docdir = "/home/jgm/ghc-6.12.1/share/doc/ghc"
-
-" Active utl (active links)
-set runtimepath+=~/.vim/addons/utl
-
-" Activate fuzzyfinder (fuzzy filename completion)
-set runtimepath+=~/.vim/addons/fuzzyfinder
+" fuzzyfinder (fuzzy filename completion)
 map <leader>f <ESC>:FufFile **/<CR>
 
-" Activate potwiki (personal wiki)
-set runtimepath+=~/.vim/addons/potwiki
+" potwiki (personal wiki)
 let potwiki_home = "$HOME/Wiki/WelcomePage"
-
-" Activate vim-fugitive
-set runtimepath+=~/.vim/addons/vim-fugitive
-

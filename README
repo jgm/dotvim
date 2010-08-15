@@ -6,4 +6,20 @@ My .vimrc looks like this:
     " and then source the common configuration file
     source ~/.vim/vimrc
 
+All addons go in the bundle directory and are managed by
+pathogen. When possible I install them as git submodules:
+
+git submodule add http://github.com/msanders/snipmate.vim.git bundle/snipmate
+git submodule init
+git submodule add http://github.com/scrooloose/nerdtree.git bundle/nerdtree
+git submodule init
+git submodule add http://github.com/clones/vim-fuzzyfinder.git bundle/fuzzyfinder
+git submodule init
+git submodule add git://github.com/tpope/vim-fugitive.git bundle/fugitive
+git submodule init
+
+Add 'tags' to bundle/snipmate/.git/info/exclude
+and bundle/fuzzyfinder/.git/info/exclude
+so that when tags are regenerated, git doesn't think
+you have a dirty submodule.
 

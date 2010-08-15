@@ -1,3 +1,15 @@
 [submodule "addons/vim-fugitive"]
 	path = addons/vim-fugitive
 	url = http://github.com/tpope/vim-fugitive.git
+[submodule "bundle/snipmate"]
+	path = bundle/snipmate
+	url = http://github.com/msanders/snipmate.vim.git
+[submodule "bundle/nerdtree"]
+	path = bundle/nerdtree
+	url = http://github.com/scrooloose/nerdtree.git
+[submodule "bundle/fuzzyfinder"]
+	path = bundle/fuzzyfinder
+	url = http://github.com/clones/vim-fuzzyfinder.git
+[submodule "bundle/fugitive"]
+	path = bundle/fugitive
+	url = git://github.com/tpope/vim-fugitive.git
