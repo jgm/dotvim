@@ -113,7 +113,8 @@ nnoremap ` '
 set hidden
 
 " Don't try to auto-indent pastes.
-set paste
+" NOTE: The following line causes snipmate not to work!
+" set paste
 set pastetoggle=<C-a>
 
 " Remember more commands.
