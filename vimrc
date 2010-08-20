@@ -198,7 +198,7 @@ command -nargs=1 Find call SearchWiki(<f-args>)
 :   exec ":Utl openLink " . basename . ".pdf"
 :endfunction
 
-:map <Leader>p :call Markdown2PDF()<cr><cr>
+map <Leader>p :call Markdown2PDF()<cr><cr>
 
 " Read abbreviations file if present.
 if filereadable(expand("~/.vim/abbrevs.vim"))
