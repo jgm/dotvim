@@ -227,7 +227,11 @@ endif
 map <leader>n :NERDTreeToggle<CR>
 
 " fuzzyfinder (fuzzy filename completion)
-map <leader>f <ESC>:FufFile **/<CR>
+nmap <leader>b :FufBuffer<CR>
+nmap <leader>f :call fuf#givenfile#launch('', 0, '> ', split(glob('./**/*'), "\n"))<CR>
+let g:fuf_file_exclude = '\v\~$|\.(o|pdf|dvi|hi|exe|dll|bak|swp)$|(^|[/\\])\.(hg|git|bzr)($|[/\\])'
+highlight Pmenu ctermbg=4 ctermfg=0
+highlight PmenuSel ctermbg=0 ctermfg=4
 
 " potwiki (personal wiki)
 let potwiki_home = "$HOME/Wiki/WelcomePage"
