@@ -231,3 +231,12 @@ map <leader>f <ESC>:FufFile **/<CR>
 
 " potwiki (personal wiki)
 let potwiki_home = "$HOME/Wiki/WelcomePage"
+
+:function UploadICAL()
+:   let source = bufname("")
+:   let fullname = expand("%")
+:   exec ":! icalupload.py " . fullname
+:endfunction
+
+map <Leader>ui :call UploadICAL()<cr>
+
