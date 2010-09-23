@@ -208,7 +208,7 @@ endif
 "-----------------------------------------------------------------------
 " GUI Settings {
 if has("gui_running")
-  colorscheme desert256
+  colorscheme zenburn
   set columns=80
   " set guifont=DejaVu\ Sans\ Mono\ 8  " set in ~/.vimrc
   set guioptions=ce 
