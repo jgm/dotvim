@@ -7,7 +7,6 @@ syn case ignore
 syn sync linebreaks=1
 
 "define Markdown groups
-syn match  Underlined /   *$/ " two or more spaces at end of line
 syn match  Keyword "^\s*[-*+]\s\+"  " list item
 syn match  Keyword "^\s*\d\+\.\s\+" " list item
 syn region Operator   start=/`/                   end=/`/ 
@@ -16,9 +15,9 @@ syn region Comment start=/^\s*>/              end=/$/
 syn region Function start=/<!--/ end=/-->/
 
 " headings
-syn region NonText      start="^##* "                 end="\($\|#\+\)"
-syn match  NonText      /^.\+\n=\+$/
-syn match  NonText      /^.\+\n-\+$/
+syn region Underlined      start="^##* "                 end="\($\|#\+\)"
+syn match  Underlined      /^.\+\n=\+$/
+syn match  Underlined      /^.\+\n-\+$/
 
 " inline footnotes
 syn region Comment start=/\^\[/ skip=/\[[^]]*\]/  end=/\]/
