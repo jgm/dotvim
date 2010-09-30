@@ -220,8 +220,20 @@ if has("gui_running")
 endif
 
 "-----------------------------------------------------------------------
-" Scripts and addons. Each is put in its own subdirectory of
-" ~/.vim/bundle. To uninstall a plugin, just delete its subdirectory.
+" Scripts and addons. These are managed by pathogen and live in bundle/.
+" Most of them are git submodules, so I can keep up to date
+"
+" To add a submodule,
+" git submodule add URL bundle/NAME
+" git submodule init
+" git commit -a
+" git push
+"
+" To remove a submodule,
+" Delete the relevant line from the .gitmodules file.
+" Delete the relevant section from .git/config.
+" Run git rm --cached path_to_submodule (no trailing slash).
+" Commit and delete the now untracked submodule files.
 
 " NERD_tree (file browser)
 map <leader>n :NERDTreeToggle<CR>
@@ -244,12 +256,8 @@ let potwiki_home = "$HOME/Wiki/WelcomePage"
 
 map <Leader>ui :call UploadICAL()<cr>
 
-imap <silent> <C-X><C-D> <C-R>= digraph#complete()<CR>
-
-"----------------------------------------------------------------------
+"-----------------------------------------------------------------------
 " Custom digraphs
 
-" corner quotes
-"dig UL 231C
-"dig UR 231D
-
+dig CL 8988 " left corner quote U+231C
+dig CR 8989 " right corner quote U+231D
