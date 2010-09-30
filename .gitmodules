@@ -13,3 +13,6 @@
 [submodule "bundle/fugitive"]
 	path = bundle/fugitive
 	url = git://github.com/tpope/vim-fugitive.git
+[submodule "bundle/unicode"]
+	path = bundle/unicode
+	url = http://github.com/chrisbra/unicode.vim.git

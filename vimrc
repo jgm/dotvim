@@ -244,3 +244,12 @@ let potwiki_home = "$HOME/Wiki/WelcomePage"
 
 map <Leader>ui :call UploadICAL()<cr>
 
+imap <silent> <C-X><C-D> <C-R>= digraph#complete()<CR>
+
+"----------------------------------------------------------------------
+" Custom digraphs
+
+" corner quotes
+"dig UL 231C
+"dig UR 231D
+
