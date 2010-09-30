@@ -259,5 +259,5 @@ map <Leader>ui :call UploadICAL()<cr>
 "-----------------------------------------------------------------------
 " Custom digraphs
 
-dig CL 8988 " left corner quote U+231C
-dig CR 8989 " right corner quote U+231D
+dig cl 8988 " left corner quote U+231C
+dig cr 8989 " right corner quote U+231D
