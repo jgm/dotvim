@@ -74,6 +74,7 @@ set tabstop=8      " real tabs are 8
 set softtabstop=2
 set shiftwidth=2   " for autoindent
 set shiftround     " indent to a multiple of shiftwidth
+set autoindent
 
 " Reflow paragraphs intelligently. using 'par'.
 set formatprg="par -h -w78 -B=.,\?_A_a "
