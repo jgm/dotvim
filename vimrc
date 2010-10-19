@@ -230,6 +230,9 @@ endif
 " git commit -a
 " git push
 "
+" After 'git pull', if submodules were added, you may need to
+" git submodule update
+
 " To remove a submodule,
 " Delete the relevant line from the .gitmodules file.
 " Delete the relevant section from .git/config.
