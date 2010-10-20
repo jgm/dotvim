@@ -16,3 +16,6 @@
 [submodule "bundle/unicode"]
 	path = bundle/unicode
 	url = http://github.com/chrisbra/unicode.vim.git
+[submodule "bundle/vim-coffee-script"]
+	path = bundle/vim-coffee-script
+	url = http://github.com/kchmck/vim-coffee-script.git
