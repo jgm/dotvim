@@ -227,10 +227,11 @@ endif
 " To add a submodule,
 " git submodule add URL bundle/NAME
 " git submodule init
-" git commit -a
+" git commit
 " git push
 "
 " After 'git pull', if submodules were added, you may need to
+" git submodule init
 " git submodule update
 
 " To remove a submodule,
@@ -238,7 +239,7 @@ endif
 " Delete the relevant section from .git/config.
 " Run git rm --cached path_to_submodule (no trailing slash).
 " Commit and delete the now untracked submodule files.
-
+"
 " NERD_tree (file browser)
 map <leader>n :NERDTreeToggle<CR>
 
