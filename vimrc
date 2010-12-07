@@ -192,12 +192,12 @@ command -nargs=1 Find call SearchWiki(<f-args>)
 
 " Convert markdown buffer to PDF.
 
-:function Markdown2PDF()
-:   let source = bufname("")
-:   let basename = expand("%:r")
-:   exec ":! markdown2pdf " . source
-:   exec ":Utl openLink " . basename . ".pdf"
-:endfunction
+function Markdown2PDF()
+   let source = bufname("")
+   let basename = expand("%:r")
+   exec ":! markdown2pdf " . source
+   exec ":Utl openLink " . basename . ".pdf"
+endfunction
 
 map <Leader>p :call Markdown2PDF()<cr><cr>
 
@@ -253,11 +253,11 @@ highlight PmenuSel ctermbg=0 ctermfg=4
 " potwiki (personal wiki)
 let potwiki_home = "$HOME/Wiki/WelcomePage"
 
-:function UploadICAL()
-:   let source = bufname("")
-:   let fullname = expand("%")
-:   exec ":! icalupload.py " . fullname
-:endfunction
+function UploadICAL()
+   let source = bufname("")
+   let fullname = expand("%")
+   exec ":! icalupload.py " . fullname
+endfunction
 
 map <Leader>ui :call UploadICAL()<cr>
 
