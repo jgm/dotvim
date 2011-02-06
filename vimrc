@@ -269,3 +269,6 @@ map ,cd :cd %:p:h<CR>
 
 dig cl 8988 " left corner quote U+231C
 dig cr 8989 " right corner quote U+231D
+
+" makes vim default register = the system clipboard
+set clipboard+=unnamed
