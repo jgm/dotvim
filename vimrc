@@ -261,6 +261,9 @@ endfunction
 
 map <Leader>ui :call UploadICAL()<cr>
 
+" ,cd changes working directory to directory of file being edited
+map ,cd :cd %:p:h<CR>
+
 "-----------------------------------------------------------------------
 " Custom digraphs
 
