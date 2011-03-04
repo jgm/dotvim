@@ -60,7 +60,7 @@ set visualbell
 set ruler
 
 " Make tabs and trailing space visible on ,l
-set listchars=tab:>-,trail:.
+set listchars=tab:>-,trail:~
 set list
 nmap <silent> <leader>l :set invlist list?<cr>
 " Make the highlighting of trailing spaces easier to distinguish from periods.
