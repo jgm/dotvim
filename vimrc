@@ -274,3 +274,8 @@ dig cr 8989 " right corner quote U+231D
 
 " makes vim default register = the system clipboard
 set clipboard+=unnamed
+
+function FixBS() " fix <BS> on OSX
+   set t_kb=
+   fixdel
+endfunction
