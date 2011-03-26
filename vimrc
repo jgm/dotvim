@@ -64,7 +64,7 @@ set listchars=tab:>-,trail:~
 set list
 nmap <silent> <leader>l :set invlist list?<cr>
 " Make the highlighting of trailing spaces easier to distinguish from periods.
-highlight SpecialKey ctermfg=Grey
+highlight SpecialKey ctermfg=Gray
 
 " Show matching brackets.
 set showmatch
