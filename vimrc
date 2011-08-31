@@ -59,12 +59,17 @@ set visualbell
 " Show line and column position of cursor, with percentage.
 set ruler
 
+" Show trailing whitespace, tabs
+"highlight TabChar ctermbg=yellow guibg=yellow
+highlight ExtraWhitespace ctermbg=Gray guibg=Gray
+"match TabChar /\t\+/
+match ExtraWhitespace /\s\+$/
+
 " Make tabs and trailing space visible on ,l
-set listchars=tab:>-,trail:~
-set list
-nmap <silent> <leader>l :set invlist list?<cr>
+" set listchars=tab:>-,trail:~
+" nmap <silent> <leader>l :set invlist list?<cr>
 " Make the highlighting of trailing spaces easier to distinguish from periods.
-highlight SpecialKey ctermfg=Gray
+" highlight SpecialKey ctermfg=Gray
 
 " Show matching brackets.
 set showmatch
