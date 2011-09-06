@@ -18,7 +18,9 @@ function! SyntaxToggle()
   execute "syntax" exists("g:syntax_on") ? "off" : "on"
 endfunction
 nmap <leader>s :call SyntaxToggle()<cr><C-l><cr>
-syntax on
+syntax enable
+set background=dark
+colorscheme solarized
 
 " Give more context in viewport.
 set scrolloff=3
@@ -216,9 +218,10 @@ endif
 "-----------------------------------------------------------------------
 " GUI Settings {
 if has("gui_running")
-  colorscheme zenburn
+  " colorscheme zenburn
   set columns=80
-  " set guifont=DejaVu\ Sans\ Mono\ 8  " set in ~/.vimrc
+  set lsp=3 " line spacing
+  set guifont=DejaVu\ Sans\ Mono\ 9  " set in ~/.vimrc
   set guioptions=ce 
   "              ||
   "              |+-- use simple dialogs rather than pop-ups
@@ -284,3 +287,7 @@ function FixBS() " fix <BS> on OSX
    set t_kb=
    fixdel
 endfunction
+
+" solarized toggle between light and back background colors
+call togglebg#map("<F5>")
+
