@@ -19,8 +19,6 @@ function! SyntaxToggle()
 endfunction
 nmap <leader>s :call SyntaxToggle()<cr><C-l><cr>
 syntax enable
-set background=dark
-colorscheme solarized
 
 " Give more context in viewport.
 set scrolloff=3
@@ -218,7 +216,8 @@ endif
 "-----------------------------------------------------------------------
 " GUI Settings {
 if has("gui_running")
-  " colorscheme zenburn
+  set background=dark
+  colorscheme solarized
   set columns=80
   set lsp=3 " line spacing
   set guifont=DejaVu\ Sans\ Mono\ 9  " set in ~/.vimrc
