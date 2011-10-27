@@ -273,6 +273,22 @@ map <Leader>ui :call UploadICAL()<cr>
 " ,cd changes working directory to directory of file being edited
 map ,cd :cd %:p:h<CR>
 
+" Haskell type signatures - from S. Visser
+
+function! HaskellType()
+  w
+  execute "normal {j^YP"
+  execute (".!ghc -XNoMonomorphismRestriction -w % -e \":t " . expand("<cword>") . "\"")
+  redraw!
+endfunction
+
+function Haskell()
+  map <buffer> <silent> tt :call HaskellType()<Cr>
+  " more haskell stuff here
+endfunction
+
+autocmd BufRead,BufNewFile *.{ag,hs,lhs,ghs} call Haskell()
+
 "-----------------------------------------------------------------------
 " Custom digraphs
 
