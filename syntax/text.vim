@@ -15,9 +15,9 @@ syn region Comment start=/^\s*>/              end=/$/
 syn region Function start=/<!--/ end=/-->/
 
 " headings
-syn region Underlined      start="^##* "                 end="\($\|#\+\)"
-syn match  Underlined      /^.\+\n=\+$/
-syn match  Underlined      /^.\+\n-\+$/
+syn region Header            start="^##* "                 end="\($\|#\+\)"
+syn match  Header            /^.\+\n=\+$/
+syn match  Header            /^.\+\n-\+$/
 
 " inline footnotes
 syn region Comment start=/\^\[/ skip=/\[[^]]*\]/  end=/\]/
@@ -31,6 +31,8 @@ syn region Comment start=/\^\[/ skip=/\[[^]]*\]/  end=/\]/
 " math
 syn region Operator start=/\$[^ \t\n$]/ end=/\$/ " inline math
 syn region Operator start=/\$\$/ end=/\$\$/ " display math
+
+hi Header cterm=bold term=bold gui=bold
 
 let b:current_syntax = "text"
 
