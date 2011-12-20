@@ -217,7 +217,7 @@ endif
 " GUI Settings {
 if has("gui_running")
   set background=dark
-  colorscheme solarized
+  colorscheme wombat " solarized
   set columns=80
   set lsp=3 " line spacing
   set guifont=DejaVu\ Sans\ Mono\ 9  " set in ~/.vimrc
