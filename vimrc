@@ -163,7 +163,7 @@ noremap <Space> <PageDown>
 noremap <BS> <PageUp>
 
 " for text files set width = 78 chars
-autocmd FileType text setlocal textwidth=78
+autocmd FileType text setlocal textwidth=72
 
 " When editing a file, always jump to the last known cursor position. Don't
 " do it when the position is invalid or when inside an event handler (happens
