@@ -84,8 +84,8 @@ set shiftround     " indent to a multiple of shiftwidth
 set autoindent
 
 " Reflow paragraphs intelligently. using 'par'.
-set formatprg="par -h -w78 -B=.,\?_A_a "
-map <C-\> !}par -h -w78 -B=.,\?_A_a <cr>
+set formatprg="par -h -w72 -B=.,\?_A_a "
+map <C-\> !}par -h -w72 -B=.,\?_A_a <cr>
 
 " Go to nearest match as you type.
 set incsearch
