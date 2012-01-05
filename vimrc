@@ -220,7 +220,7 @@ if has("gui_running")
   colorscheme wombat " solarized
   set columns=80
   set lsp=3 " line spacing
-  set guifont=DejaVu\ Sans\ Mono\ 9  " set in ~/.vimrc
+  set guifont=DejaVu\ Sans\ Mono\ 10  " set in ~/.vimrc
   set guioptions=ce 
   "              ||
   "              |+-- use simple dialogs rather than pop-ups
