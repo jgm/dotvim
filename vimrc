@@ -152,6 +152,9 @@ map <C-Left> <C-W><Left>
 " S skips preceding whitespace and puts cursor on last non-whitespace char
 :map S :call search('\S','bceW')<cr>
 
+" toggle spelling
+:map <Leader>s :set invspell<cr>
+
 " If for aesthetic reasons you want a left margin in writing text...
 function! GutterLeft()
   set number
