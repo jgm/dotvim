@@ -7,9 +7,6 @@ call pathogen#runtime_append_all_bundles()
 " Set leader to comma.
 let mapleader = ","
 
-" Allow ~ to behave like an operator
-set tildeop
-
 " Don't redraw screen while executing macros.
 set nolazyredraw
 
