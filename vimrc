@@ -309,11 +309,12 @@ endfunction
 " solarized toggle between light and back background colors
 call togglebg#map("<F5>")
 
-command! -nargs=* -complete=shellcmd LatinWord new | setlocal buftype=nofile bufhidden=hide noswapfile | r! "/home/jgm/bin/words" <args>
+" command! -nargs=* LatinWord new | setlocal buftype=nofile bufhidden=wipe noswapfile | r! "/home/jgm/bin/words" <args>
 
 nmap <leader>l :call LatinWordUnderCursor()<cr>
 
 function! LatinWordUnderCursor()
   let s:wordUnderCursor = expand("<cword>")
-  execute ":LatinWord " . s:wordUnderCursor
+  let s:definition = system("/home/jgm/bin/words " . s:wordUnderCursor . " | tr '\r' ' ' | tr '\n' ' '| sed -e 's/  */ /g'")
+  echom s:definition
 endfunction
