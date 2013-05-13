@@ -85,7 +85,7 @@ set autoindent
 
 " Reflow paragraphs intelligently. using 'par'.
 set formatprg="par -h -w72 -B=.,\?_A_a "
-map <C-\> !}par -h -w72 -B=.,\?_A_a <cr>
+map <C-\> !}par -h -w68 -B=.,\?_A_a <cr>
 
 " Go to nearest match as you type.
 set incsearch
