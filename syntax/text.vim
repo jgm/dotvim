@@ -22,6 +22,9 @@ syn match  Header            /^.\+\n-\+$/
 " inline footnotes
 syn region Comment start=/\^\[/ skip=/\[[^]]*\]/  end=/\]/
 
+" yaml headers
+syn region Comment start=/^--- *$/ end=/^... *$/
+
 " links
 "syn region String start=/\[/ end=/\]/
 
