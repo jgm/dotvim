@@ -32,7 +32,7 @@ syn region Comment start=/^--- *$/ end=/^... *$/
 " syn region Operator start=/^\s*\n\(    \|\t\)/ end=/.*\n\s*\n/
 
 " math
-"syn region Operator start=/\$[^ \t\n$]/ end=/\$/ " inline math
+syn region Operator start=/\$[^ \t\n0-9$]/ end=/\$/ " inline math
 syn region Operator start=/\$\$/ end=/\$\$/ " display math
 
 hi Header cterm=bold term=bold gui=bold
