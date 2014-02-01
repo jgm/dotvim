@@ -9,8 +9,9 @@ syn sync linebreaks=1
 "define Markdown groups
 syn match  Keyword "^\s*[-*+]\s\+"  " list item
 syn match  Keyword "^\s*\d\+\.\s\+" " list item
-syn region Operator   start=/`/                   end=/`/ 
+syn region Operator   start=/`/                   end=/`/
 syn region Operator   start=/\s*``[^`]*/ skip=/`/ end=/[^`]*``\s*/
+syn region Operator   start=/```/                 end=/```/
 syn region Comment start=/^\s*>/              end=/$/ 
 syn region Function start=/<!--/ end=/-->/
 
