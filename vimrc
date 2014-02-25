@@ -307,7 +307,7 @@ function FixBS() " fix <BS> on OSX
 endfunction
 
 " solarized toggle between light and back background colors
-call togglebg#map("<F5>")
+" call togglebg#map("<F5>")
 
 " command! -nargs=* LatinWord new | setlocal buftype=nofile bufhidden=wipe noswapfile | r! "/home/jgm/bin/words" <args>
 
