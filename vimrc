@@ -265,9 +265,6 @@ let g:fuf_file_exclude = '\v\~$|\.(o|pdf|dvi|hi|exe|dll|bak|swp)$|(^|[/\\])\.(hg
 highlight Pmenu ctermbg=4 ctermfg=0
 highlight PmenuSel ctermbg=0 ctermfg=4
 
-" potwiki (personal wiki)
-let potwiki_home = "$HOME/Wiki/WelcomePage"
-
 function UploadICAL()
    let source = bufname("")
    let fullname = expand("%")
