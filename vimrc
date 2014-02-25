@@ -13,6 +13,9 @@ set nolazyredraw
 " Behave intelligently for type of file.
 filetype plugin indent on
 
+" This is needed for text_flowed=yes in mutt:
+setlocal fo+=aw
+
 " Syntax highlighting.
 function! SyntaxToggle()
   execute "syntax" exists("g:syntax_on") ? "off" : "on"
