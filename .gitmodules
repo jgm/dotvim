@@ -31,3 +31,6 @@
 [submodule "bundle/align"]
 	path = bundle/align
 	url = http://github.com/vim-scripts/Align.git
+[submodule "bundle/haskell-vim"]
+	path = bundle/haskell-vim
+	url = https://github.com/raichoo/haskell-vim.git
