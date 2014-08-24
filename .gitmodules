@@ -1,36 +1,3 @@
-[submodule "addons/vim-fugitive"]
-	path = addons/vim-fugitive
-	url = http://github.com/tpope/vim-fugitive.git
-[submodule "bundle/snipmate"]
-	path = bundle/snipmate
-	url = http://github.com/msanders/snipmate.vim.git
-[submodule "bundle/nerdtree"]
-	path = bundle/nerdtree
-	url = http://github.com/scrooloose/nerdtree.git
-[submodule "bundle/fuzzyfinder"]
-	path = bundle/fuzzyfinder
-	url = http://github.com/clones/vim-fuzzyfinder.git
-[submodule "bundle/fugitive"]
-	path = bundle/fugitive
-	url = git://github.com/tpope/vim-fugitive.git
-[submodule "bundle/unicode"]
-	path = bundle/unicode
-	url = http://github.com/chrisbra/unicode.vim.git
-[submodule "bundle/vim-coffee-script"]
-	path = bundle/vim-coffee-script
-	url = http://github.com/kchmck/vim-coffee-script.git
-[submodule "bundle/speeddating"]
-	path = bundle/speeddating
-	url = https://github.com/tpope/vim-speeddating.git
-[submodule "bundle/repeat"]
-	path = bundle/repeat
-	url = https://github.com/tpope/vim-repeat.git
-[submodule "bundle/vim-colors-solarized"]
-	path = bundle/vim-colors-solarized
-	url = git://github.com/altercation/vim-colors-solarized.git
-[submodule "bundle/align"]
-	path = bundle/align
-	url = http://github.com/vim-scripts/Align.git
-[submodule "bundle/haskell-vim"]
-	path = bundle/haskell-vim
-	url = https://github.com/raichoo/haskell-vim.git
+[submodule "/Users/jgm/.vim/bundle/vundle"]
+	path = /Users/jgm/.vim/bundle/vundle
+	url = https://github.com/gmarik/vundle.git
