@@ -1,8 +1,20 @@
-"-----------------------------------------------------------------------
-" Basic configuration.
-
+set nocompatible
 filetype off " temporarily
-call pathogen#runtime_append_all_bundles()
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+Bundle 'gmarik/vundle'
+Bundle 'vim-scripts/Align'
+Bundle 'kien/ctrlp.vim'
+Bundle 'lukerandall/haskellmode-vim'
+Bundle 'tpope/vim-fugitive'
+
+" Other packages we used to have:
+" unicode, fugitive, fuzzyfinder, repeat, haskell-vim, snipmate,
+" vim-colors-solarized
+
+" Behave intelligently for type of file.
+filetype plugin indent on
 
 " Set leader to comma.
 let mapleader = ","
@@ -10,8 +22,6 @@ let mapleader = ","
 " Don't redraw screen while executing macros.
 set nolazyredraw
 
-" Behave intelligently for type of file.
-filetype plugin indent on
 
 " This is needed for text_flowed=yes in mutt:
 setlocal fo+=aw
@@ -31,7 +41,6 @@ nnoremap <C-e> 3<C-e>
 nnoremap <C-y> 3<C-y>
 
 set nomodeline " for security reasons
-set nocompatible
 
 " Encoding and line breaks.
 set encoding=utf-8
@@ -235,26 +244,6 @@ if has("gui_running")
   set mousehide " hide the mouse cursor when typing
 endif
 
-"-----------------------------------------------------------------------
-" Scripts and addons. These are managed by pathogen and live in bundle/.
-" Most of them are git submodules, so I can keep up to date
-"
-" To add a submodule,
-" git submodule add URL bundle/NAME
-" git submodule init
-" git commit
-" git push
-"
-" After 'git pull', if submodules were added, you may need to
-" git submodule init
-" git submodule update
-
-" To remove a submodule,
-" Delete the relevant line from the .gitmodules file.
-" Delete the relevant section from .git/config.
-" Run git rm --cached path_to_submodule (no trailing slash).
-" Commit and delete the now untracked submodule files.
-"
 " NERD_tree (file browser)
 map <leader>n :NERDTreeToggle<CR>
 

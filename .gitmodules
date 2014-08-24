@@ -1,3 +1,6 @@
 [submodule "/Users/jgm/.vim/bundle/vundle"]
 	path = /Users/jgm/.vim/bundle/vundle
 	url = https://github.com/gmarik/vundle.git
+[submodule "bundle/vundle"]
+	path = bundle/vundle
+	url = https://github.com/gmarik/vundle.git
