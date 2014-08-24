@@ -8,6 +8,8 @@ Bundle 'vim-scripts/Align'
 Bundle 'kien/ctrlp.vim'
 Bundle 'lukerandall/haskellmode-vim'
 " Bundle 'bitc/vim-hdevtools'
+Bundle 'Shougo/vimproc.vim'
+Bundle 'eagletmt/ghcmod-vim'
 Bundle 'scrooloose/syntastic'
 Bundle 'tpope/vim-fugitive'
 
@@ -275,8 +277,11 @@ map ,cd :cd %:p:h<CR>
 " au FileType haskell nnoremap <buffer> <silent> <leader>hi :HdevtoolsInfo<CR>
 
 " for ghc-mod
-map <silent> tu :call GHC_BrowseAll()<CR>
-map <silent> tw :call GHC_ShowType(1)<CR>
+map <silent> <leader>ht :GhcModType<CR>
+map <silent> <leader>hc :GhcModTypeClear<CR>
+map <silent> <leader>hs :GhcModCheck<CR>
+map <silent> <leader>hl :GhcModLint<CR>
+map <silent> <leader>hx :GhcModExpand<CR>
 
 " for syntastic
 map <silent> <Leader>e :Errors<CR>
