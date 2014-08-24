@@ -7,6 +7,8 @@ Bundle 'gmarik/vundle'
 Bundle 'vim-scripts/Align'
 Bundle 'kien/ctrlp.vim'
 Bundle 'lukerandall/haskellmode-vim'
+" Bundle 'bitc/vim-hdevtools'
+Bundle 'scrooloose/syntastic'
 Bundle 'tpope/vim-fugitive'
 
 " Other packages we used to have:
@@ -264,6 +266,28 @@ map <Leader>ui :call UploadICAL()<cr>
 
 " ,cd changes working directory to directory of file being edited
 map ,cd :cd %:p:h<CR>
+
+" haskell-mode
+ " for hdevtools
+" au Bufenter *.hs compiler ghc
+" au FileType haskell nnoremap <buffer> <leader>ht :HdevtoolsType<CR>
+" au FileType haskell nnoremap <buffer> <silent> <leader>hc :HdevtoolsClear<CR>
+" au FileType haskell nnoremap <buffer> <silent> <leader>hi :HdevtoolsInfo<CR>
+
+" for ghc-mod
+map <silent> tu :call GHC_BrowseAll()<CR>
+map <silent> tw :call GHC_ShowType(1)<CR>
+
+" for syntastic
+map <silent> <Leader>e :Errors<CR>
+map <Leader>s :SyntasticToggleMode<CR>
+
+" enable filetype detection, plus loading of filetype plugins
+filetype plugin on
+
+" configure browser for haskell_doc.vim
+let g:haddock_browser = "open"
+let g:haddock_browser_callformat = "%s %s"
 
 " Haskell type signatures - from S. Visser
 
