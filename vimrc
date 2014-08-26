@@ -5,7 +5,7 @@ call vundle#rc()
 
 Bundle 'gmarik/vundle'
 Bundle 'vim-scripts/Align'
-Bundle 'kien/ctrlp.vim'
+" Bundle 'kien/ctrlp.vim'
 Bundle 'lukerandall/haskellmode-vim'
 " Bundle 'bitc/vim-hdevtools'
 Bundle 'Shougo/vimproc.vim'
