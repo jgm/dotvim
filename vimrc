@@ -9,7 +9,7 @@ Bundle 'vim-scripts/Align'
 Bundle 'lukerandall/haskellmode-vim'
 " Bundle 'bitc/vim-hdevtools'
 Bundle 'Shougo/vimproc.vim'
-Bundle 'eagletmt/ghcmod-vim'
+" Bundle 'eagletmt/ghcmod-vim'
 Bundle 'scrooloose/syntastic'
 Bundle 'tpope/vim-fugitive'
 
