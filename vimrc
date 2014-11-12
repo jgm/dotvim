@@ -28,7 +28,7 @@ set nolazyredraw
 
 
 " This is needed for text_flowed=yes in mutt:
-setlocal fo+=aw
+setlocal linebreak
 
 " Syntax highlighting.
 function! SyntaxToggle()
