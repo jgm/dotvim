@@ -285,8 +285,9 @@ map <silent> <leader>hx :GhcModExpand<CR>
 
 " for syntastic
 map <silent> <Leader>e :Errors<CR>
-map <Leader>s :SyntasticToggleMode<CR>
-let g:syntastic_disabled_filetypes=['haskell']
+" keep disabled until you do <Leader>S for errorr
+let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': [] }
+nnoremap <Leader>S :SyntasticCheck<CR> :SyntasticToggleMode<CR>
 
 " enable filetype detection, plus loading of filetype plugins
 filetype plugin on
