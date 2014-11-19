@@ -94,8 +94,8 @@ set mat=5  " for half a sec
 " Tabs:  default is two spaces.
 set expandtab
 set tabstop=8      " real tabs are 8
-set softtabstop=2
-set shiftwidth=2   " for autoindent
+set softtabstop=4
+set shiftwidth=4   " for autoindent
 set shiftround     " indent to a multiple of shiftwidth
 set autoindent
 
