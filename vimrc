@@ -5,17 +5,10 @@ call vundle#rc()
 
 Bundle 'gmarik/vundle'
 Bundle 'vim-scripts/Align'
-" Bundle 'kien/ctrlp.vim'
 Bundle 'lukerandall/haskellmode-vim'
-" Bundle 'bitc/vim-hdevtools'
 Bundle 'Shougo/vimproc.vim'
-" Bundle 'eagletmt/ghcmod-vim'
 Bundle 'scrooloose/syntastic'
 Bundle 'tpope/vim-fugitive'
-
-" Other packages we used to have:
-" unicode, fugitive, fuzzyfinder, repeat, haskell-vim, snipmate,
-" vim-colors-solarized
 
 " Behave intelligently for type of file.
 filetype plugin indent on
@@ -25,17 +18,6 @@ let mapleader = ","
 
 " Don't redraw screen while executing macros.
 set nolazyredraw
-
-
-" This is needed for text_flowed=yes in mutt:
-setlocal fo+=aw
-
-" Syntax highlighting.
-function! SyntaxToggle()
-  execute "syntax" exists("g:syntax_on") ? "off" : "on"
-endfunction
-nmap <leader>s :call SyntaxToggle()<cr><C-l><cr>
-syntax enable
 
 " Give more context in viewport.
 set scrolloff=3
@@ -80,12 +62,6 @@ set ruler
 highlight ExtraWhitespace ctermbg=Gray guibg=Gray
 "match TabChar /\t\+/
 match ExtraWhitespace /\s\+$/
-
-" Make tabs and trailing space visible on ,l
-" set listchars=tab:>-,trail:~
-" nmap <silent> <leader>l :set invlist list?<cr>
-" Make the highlighting of trailing spaces easier to distinguish from periods.
-" highlight SpecialKey ctermfg=Gray
 
 " Show matching brackets.
 set showmatch
@@ -204,28 +180,7 @@ map <leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
 
 " Use zl to list buffers, and go to matching buffer
 " Type part of bufname after prompt.
-nmap zl :ls!<CR>:buf 
-
-" Visit todo list
-nmap <Leader>td :e ~/Wiki/TodoList<CR>
-
-function! SearchWiki(searchTerm)
-  exec ":vimgrep " . a:searchTerm . " ~/Wiki/*"
-  exec ":copen"
-endfunction
-
-command -nargs=1 Find call SearchWiki(<f-args>)
-
-" Convert markdown buffer to PDF.
-
-function Markdown2PDF()
-   let source = bufname("")
-   let basename = expand("%:r")
-   exec ":! markdown2pdf " . source
-   exec ":Utl openLink " . basename . ".pdf"
-endfunction
-
-map <Leader>p :call Markdown2PDF()<cr><cr>
+nmap zl :ls!<CR>:buf
 
 " Read abbreviations file if present.
 if filereadable(expand("~/.vim/abbrevs.vim"))
@@ -251,13 +206,6 @@ endif
 " NERD_tree (file browser)
 map <leader>n :NERDTreeToggle<CR>
 
-" fuzzyfinder (fuzzy filename completion)
-nmap <leader>b :FufBuffer<CR>
-nmap <leader>f :call fuf#givenfile#launch('', 0, '> ', split(glob('./**/*'), "\n"))<CR>
-let g:fuf_file_exclude = '\v\~$|\.(o|pdf|dvi|hi|exe|dll|bak|swp)$|(^|[/\\])\.(hg|git|bzr)($|[/\\])'
-highlight Pmenu ctermbg=4 ctermfg=0
-highlight PmenuSel ctermbg=0 ctermfg=4
-
 function UploadICAL()
    let source = bufname("")
    let fullname = expand("%")
@@ -269,20 +217,6 @@ map <Leader>ui :call UploadICAL()<cr>
 " ,cd changes working directory to directory of file being edited
 map ,cd :cd %:p:h<CR>
 
-" haskell-mode
- " for hdevtools
-" au Bufenter *.hs compiler ghc
-" au FileType haskell nnoremap <buffer> <leader>ht :HdevtoolsType<CR>
-" au FileType haskell nnoremap <buffer> <silent> <leader>hc :HdevtoolsClear<CR>
-" au FileType haskell nnoremap <buffer> <silent> <leader>hi :HdevtoolsInfo<CR>
-
-" for ghc-mod
-map <silent> <leader>ht :GhcModType<CR>
-map <silent> <leader>hc :GhcModTypeClear<CR>
-map <silent> <leader>hs :GhcModCheck<CR>
-map <silent> <leader>hl :GhcModLint<CR>
-map <silent> <leader>hx :GhcModExpand<CR>
-
 " for syntastic
 map <silent> <Leader>e :Errors<CR>
 " keep disabled until you do <Leader>S for errorr
@@ -291,11 +225,6 @@ nnoremap <Leader>S :SyntasticCheck<CR> :SyntasticToggleMode<CR>
 
 " enable filetype detection, plus loading of filetype plugins
 filetype plugin on
-
-" configure browser for haskell_doc.vim
-let g:haddock_browser = "open"
-let g:haddock_browser_callformat = "%s %s"
-let g:haddock_docdir = "/usr/share/doc/ghc/"
 
 " Haskell type signatures - from S. Visser
 
@@ -325,17 +254,4 @@ set clipboard+=unnamed
 function FixBS() " fix <BS> on OSX
    set t_kb=
    fixdel
-endfunction
-
-" solarized toggle between light and back background colors
-" call togglebg#map("<F5>")
-
-" command! -nargs=* LatinWord new | setlocal buftype=nofile bufhidden=wipe noswapfile | r! "/home/jgm/bin/words" <args>
-
-nmap <leader>l :call LatinWordUnderCursor()<cr>
-
-function! LatinWordUnderCursor()
-  let s:wordUnderCursor = expand("<cword>")
-  let s:definition = system("/home/jgm/bin/words " . s:wordUnderCursor . " | tr '\r' ' ' | tr '\n' ' '| sed -e 's/  */ /g'")
-  echom s:definition
 endfunction
