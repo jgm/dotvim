@@ -12,6 +12,7 @@ Bundle 'tpope/vim-fugitive'
 
 " Behave intelligently for type of file.
 filetype plugin indent on
+syntax on
 
 " Set leader to comma.
 let mapleader = ","
