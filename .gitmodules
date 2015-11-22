@@ -4,3 +4,6 @@
 [submodule "bundle/vundle"]
 	path = bundle/vundle
 	url = https://github.com/gmarik/vundle.git
+[submodule "bundle/hlint-refactor-vim"]
+	path = bundle/hlint-refactor-vim
+	url = https://github.com/mpickering/hlint-refactor-vim.git
