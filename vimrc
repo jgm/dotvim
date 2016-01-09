@@ -249,6 +249,11 @@ endfunction
 
 autocmd BufRead,BufNewFile *.{ag,hs,lhs,ghs} call Haskell()
 
+if &diff
+   colorscheme desert256
+endif
+
+
 "-----------------------------------------------------------------------
 " Custom digraphs
 
