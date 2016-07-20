@@ -1,15 +1,5 @@
 set nocompatible
 filetype off " temporarily
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-
-Bundle 'gmarik/vundle'
-Bundle 'vim-scripts/Align'
-Bundle 'lukerandall/haskellmode-vim'
-Bundle 'Shougo/vimproc.vim'
-Bundle 'scrooloose/syntastic'
-Bundle 'tpope/vim-fugitive'
-Bundle 'mpickering/hlint-refactor-vim'
 
 " Behave intelligently for type of file.
 filetype plugin indent on
