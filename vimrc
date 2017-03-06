@@ -12,10 +12,6 @@ call plug#end()
 set nocompatible
 filetype off " temporarily
 
-" this is for vim-airline
-let g:airline_theme='papercolor'
-set laststatus=2
-
 " Behave intelligently for type of file.
 filetype plugin indent on
 syntax on
@@ -272,3 +268,16 @@ function FixBS() " fix <BS> on OSX
    set t_kb=
    fixdel
 endfunction
+
+" Plugin settings
+
+" this is for vim-airline
+let g:airline_theme='papercolor'
+set laststatus=2
+
+" key bindings for vim-fugitive
+nmap <leader>gs :Gstatus<cr>
+nmap <leader>gc :Gcommit<cr>
+nmap <leader>ga :Gwrite<cr>
+nmap <leader>gl :Glog<cr>
+nmap <leader>gd :Gdiff<cr>
