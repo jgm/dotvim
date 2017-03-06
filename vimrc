@@ -11,7 +11,7 @@ set nocompatible
 filetype off " temporarily
 
 " this is for vim-airline
-let g:airline_theme='simple'
+let g:airline_theme='papercolor'
 set laststatus=2
 
 " Behave intelligently for type of file.
