@@ -7,6 +7,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 Plug 'Shougo/vimproc'
 Plug 'eagletmt/ghcmod-vim'
+Plug 'scrooloose/nerdtree'
 
 " initialize plugins
 call plug#end()
@@ -289,3 +290,7 @@ map <silent> tw :GhcModTypeInsert<CR>
 map <silent> ts :GhcModSplitFunCase<CR>
 map <silent> tq :GhcModType<CR>
 map <silent> te :GhcModTypeClear<CR>
+
+" toggle nerdtree
+map <Leader>n :NERDTreeToggle<CR>
+
