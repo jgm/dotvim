@@ -1,3 +1,12 @@
+" :PlugInstall to install these plugins
+call plug#begin('~/.vim/plug')
+
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
+" initialize plugins
+call plug#end()
+
 set nocompatible
 filetype off " temporarily
 
