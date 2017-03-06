@@ -10,6 +10,10 @@ call plug#end()
 set nocompatible
 filetype off " temporarily
 
+" this is for vim-airline
+let g:airline_theme='simple'
+set laststatus=2
+
 " Behave intelligently for type of file.
 filetype plugin indent on
 syntax on
