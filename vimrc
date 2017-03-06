@@ -4,10 +4,10 @@ call plug#begin('~/.vim/plug')
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'airblade/vim-gitgutter'
-Plug 'tpope/vim-fugitive'
 Plug 'Shougo/vimproc'
 Plug 'eagletmt/ghcmod-vim'
 Plug 'scrooloose/nerdtree'
+Plug 'junegunn/tabularize'
 
 " initialize plugins
 call plug#end()
@@ -274,16 +274,18 @@ endfunction
 
 " Plugin settings
 
+" gitgutter
+set updatetime=250
+" bindings:
+nmap ]h <Plug>GitGutterNextHunk
+nmap [h <Plug>GitGutterPrevHunk
+" You can stage or undo an individual hunk when your cursor is in it:
+" stage the hunk with <Leader>hs or
+" undo it with <Leader>hu.
+
 " this is for vim-airline
 let g:airline_theme='papercolor'
 set laststatus=2
-
-" key bindings for vim-fugitive
-nmap <leader>gs :Gstatus<cr>
-nmap <leader>gc :Gcommit<cr>
-nmap <leader>ga :Gwrite<cr>
-nmap <leader>gl :Glog<cr>
-nmap <leader>gd :Gdiff<cr>
 
 " key bindings for ghc-mod
 map <silent> tw :GhcModTypeInsert<CR>
@@ -294,3 +296,9 @@ map <silent> te :GhcModTypeClear<CR>
 " toggle nerdtree
 map <Leader>n :NERDTreeToggle<CR>
 
+" tabularize with haskell
+let g:haskell_tabular = 1
+
+vmap a= :Tabularize /=<CR>
+vmap a; :Tabularize /::<CR>
+vmap a- :Tabularize /-><CR>
