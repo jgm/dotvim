@@ -8,6 +8,7 @@ Plug 'Shougo/vimproc'
 Plug 'eagletmt/ghcmod-vim'
 Plug 'scrooloose/nerdtree'
 Plug 'junegunn/tabularize'
+Plug 'tpope/vim-fugitive'
 
 " initialize plugins
 call plug#end()
@@ -282,6 +283,13 @@ nmap [h <Plug>GitGutterPrevHunk
 " You can stage or undo an individual hunk when your cursor is in it:
 " stage the hunk with <Leader>hs or
 " undo it with <Leader>hu.
+
+" key bindings for vim-fugitive
+nmap <leader>gs :Gstatus<cr>
+nmap <leader>gc :Gcommit<cr>
+nmap <leader>ga :Gwrite<cr>
+nmap <leader>gl :Glog<cr>
+nmap <leader>gd :Gdiff<cr>
 
 " this is for vim-airline
 let g:airline_theme='papercolor'
