@@ -3,6 +3,7 @@ call plug#begin('~/.vim/plug')
 
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'airblade/vim-gitgutter'
 
 " initialize plugins
 call plug#end()
