@@ -9,6 +9,11 @@ Plug 'eagletmt/ghcmod-vim'
 Plug 'scrooloose/nerdtree'
 Plug 'junegunn/tabularize'
 Plug 'tpope/vim-fugitive'
+Plug 'mileszs/ack.vim'
+Plug 'vim-pandoc/vim-pandoc-syntax'
+" Plug 'vim-pandoc/vim-pandoc'
+" Plug 'godlygeek/tabular'
+" Plug 'plasticboy/vim-markdown'
 
 " initialize plugins
 call plug#end()
@@ -176,8 +181,13 @@ autocmd BufReadPost *
 \ endif
 
 " Highlight according to markdown conventions in text files.
-augroup text
-  autocmd BufRead *.txt set ai formatoptions=tcroqn2 comments=n:>
+" augroup text
+"  autocmd BufRead *.txt set ai formatoptions=tcroqn2 comments=n:>
+" augroup END
+
+augroup pandoc_syntax
+  au! BufNewFile,BufFilePre,BufRead *.md set filetype=markdown.pandoc
+  au! BufNewFile,BufFilePre,BufRead *.txt set filetype=markdown.pandoc
 augroup END
 
 " Edit another file in the same directory as the current file
@@ -310,3 +320,9 @@ let g:haskell_tabular = 1
 vmap a= :Tabularize /=<CR>
 vmap a; :Tabularize /::<CR>
 vmap a- :Tabularize /-><CR>
+
+" vim-pandoc
+" let g:pandoc#syntax#conceal#urls=1
+let g:pandoc#syntax#conceal#use=0
+" emphasis looks bad in macos terminal which doesn't have ital/bold:
+let g:pandoc#syntax#style#emphases=0
