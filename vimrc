@@ -332,3 +332,6 @@ let g:pandoc#syntax#style#emphases=0
 
 " undo-tree
 map <leader>u :UndotreeToggle<cr>
+
+" ctrl-p
+let g:ctrlp_map = '<leader>p'
