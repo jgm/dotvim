@@ -11,6 +11,9 @@ Plug 'junegunn/tabularize'
 Plug 'tpope/vim-fugitive'
 Plug 'mileszs/ack.vim'
 Plug 'vim-pandoc/vim-pandoc-syntax'
+Plug 'mbbill/undotree'
+Plug 'kien/ctrlp.vim'
+
 " Plug 'vim-pandoc/vim-pandoc'
 " Plug 'godlygeek/tabular'
 " Plug 'plasticboy/vim-markdown'
@@ -326,3 +329,6 @@ vmap a- :Tabularize /-><CR>
 let g:pandoc#syntax#conceal#use=0
 " emphasis looks bad in macos terminal which doesn't have ital/bold:
 let g:pandoc#syntax#style#emphases=0
+
+" undo-tree
+map <leader>u :UndotreeToggle<cr>
