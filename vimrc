@@ -172,6 +172,10 @@ endfunction
 noremap <Space> <PageDown>
 noremap <BS> <PageUp>
 
+" Instead of ctrl-O, ctrl-I, leader b/f for back/forward in jumplist
+noremap <leader>f <C-I>
+noremap <leader>b <C-O>
+
 " for text files set width
 autocmd FileType text setlocal textwidth=64
 
