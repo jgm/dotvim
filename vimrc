@@ -13,6 +13,7 @@ Plug 'mileszs/ack.vim'
 Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'mbbill/undotree'
 Plug 'kien/ctrlp.vim'
+Plug 'jceb/vim-orgmode'
 
 " Plug 'vim-pandoc/vim-pandoc'
 " Plug 'godlygeek/tabular'
