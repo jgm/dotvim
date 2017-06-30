@@ -1,5 +1,5 @@
-syn match  diffRemoved "\[-\([^-]\|-[^\]]\)*-\]"
-syn match  diffAdded "{+\([^+]\|+[^}]\)*+}"
+syn region diffRemoved start=/\[-/ end=/-\]/
+syn region diffAdded start=/{+/ end=/+}/
 syn match   diffFile "^diff.*"
 syn match   diffIndexLine "^index.*"
 syn match   diffLine "^\(+++\|---\|@@\).*"
