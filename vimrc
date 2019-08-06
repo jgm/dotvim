@@ -16,6 +16,7 @@ Plug 'kien/ctrlp.vim'
 Plug 'tpope/vim-speeddating'
 Plug 'jceb/vim-orgmode'
 Plug 'vim-scripts/loremipsum'
+Plug 'LaTeX-Box-Team/LaTeX-Box'
 
 " Plug 'vim-pandoc/vim-pandoc'
 " Plug 'godlygeek/tabular'
