@@ -183,6 +183,7 @@ noremap <leader>b <C-O>
 
 " for text files set width
 autocmd FileType text setlocal textwidth=64
+autocmd FileType tex setlocal textwidth=64
 
 " When editing a file, always jump to the last known cursor position. Don't
 " do it when the position is invalid or when inside an event handler (happens
