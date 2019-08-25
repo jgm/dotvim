@@ -93,7 +93,7 @@ set mat=5  " for half a sec
 set expandtab
 set tabstop=8      " real tabs are 8
 set softtabstop=4
-set shiftwidth=4   " for autoindent
+set shiftwidth=2   " for autoindent
 set shiftround     " indent to a multiple of shiftwidth
 set autoindent
 
@@ -268,7 +268,7 @@ let g:haskell_indent_case = 2
 let g:haskell_indent_let = 4
 " let foo = ...
 "     bar
-let g:haskell_indent_after_bare_where = 2
+let g:haskell_indent_after_bare_where = 1
 " where
 "   foo =
 let g:haskell_indent_guard = 2
