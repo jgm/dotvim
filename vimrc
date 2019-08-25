@@ -18,6 +18,8 @@ Plug 'jceb/vim-orgmode'
 Plug 'vim-scripts/loremipsum'
 Plug 'LaTeX-Box-Team/LaTeX-Box'
 Plug 'neovimhaskell/haskell-vim'
+Plug 'junegunn/vim-easy-align'
+
 
 " Plug 'vim-pandoc/vim-pandoc'
 " Plug 'godlygeek/tabular'
@@ -365,3 +367,11 @@ map <leader>u :UndotreeToggle<cr>
 
 " ctrl-p
 let g:ctrlp_map = '<leader>p'
+
+" easy-align
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
+
