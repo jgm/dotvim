@@ -10,7 +10,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'junegunn/tabularize'
 Plug 'tpope/vim-fugitive'
 Plug 'mileszs/ack.vim'
-Plug 'vim-pandoc/vim-pandoc-syntax'
+" Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'mbbill/undotree'
 Plug 'kien/ctrlp.vim'
 Plug 'tpope/vim-speeddating'
@@ -196,14 +196,14 @@ autocmd BufReadPost *
 \ endif
 
 " Highlight according to markdown conventions in text files.
-" augroup text
-"  autocmd BufRead *.txt set ai formatoptions=tcroqn2 comments=n:>
-" augroup END
-
-augroup pandoc_syntax
-  au! BufNewFile,BufFilePre,BufRead *.md set filetype=markdown.pandoc
-  au! BufNewFile,BufFilePre,BufRead *.txt set filetype=markdown.pandoc
+augroup markdown
+  autocmd BufRead *.txt set ai formatoptions=tcroqn2 comments=n:>
 augroup END
+
+" augroup pandoc_syntax
+"   au! BufNewFile,BufFilePre,BufRead *.md set filetype=markdown.pandoc
+"   au! BufNewFile,BufFilePre,BufRead *.txt set filetype=markdown.pandoc
+" augroup END
 
 " Edit another file in the same directory as the current file
 " uses expression to extract path from current file's path
