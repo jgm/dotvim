@@ -23,7 +23,8 @@ Plug 'junegunn/vim-easy-align'
 
 " Plug 'vim-pandoc/vim-pandoc'
 " Plug 'godlygeek/tabular'
-" Plug 'plasticboy/vim-markdown'
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
 
 " initialize plugins
 call plug#end()
@@ -200,6 +201,12 @@ augroup markdown
   autocmd BufRead *.md set filetype=markdown ai formatoptions=tcroqn2 comments=n:>
   autocmd BufRead *.txt set ai filetype=markdown formatoptions=tcroqn2 comments=n:>
 augroup END
+
+" vim-markdown settings
+let g:vim_markdown_folding_disabled = 1
+let g:vim_markdown_math = 1
+let g:vim_markdown_frontmatter = 1
+let g:vim_markdown_strikethrough = 1
 
 " augroup pandoc_syntax
 "   au! BufNewFile,BufFilePre,BufRead *.md set filetype=markdown.pandoc
