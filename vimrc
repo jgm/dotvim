@@ -197,7 +197,8 @@ autocmd BufReadPost *
 
 " Highlight according to markdown conventions in text files.
 augroup markdown
-  autocmd BufRead *.txt set ai formatoptions=tcroqn2 comments=n:>
+  autocmd BufRead *.md set filetype=markdown ai formatoptions=tcroqn2 comments=n:>
+  autocmd BufRead *.txt set ai filetype=markdown formatoptions=tcroqn2 comments=n:>
 augroup END
 
 " augroup pandoc_syntax
