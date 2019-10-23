@@ -208,6 +208,8 @@ let g:vim_markdown_math = 1
 let g:vim_markdown_frontmatter = 1
 let g:vim_markdown_strikethrough = 1
 
+hi htmlItalic             gui=underline cterm=underline
+
 " augroup pandoc_syntax
 "   au! BufNewFile,BufFilePre,BufRead *.md set filetype=markdown.pandoc
 "   au! BufNewFile,BufFilePre,BufRead *.txt set filetype=markdown.pandoc
