@@ -245,7 +245,15 @@ if has("gui_running")
 endif
 
 " NERD_tree (file browser)
-map <leader>n :NERDTreeToggle<CR>
+function! NERDTreeToggleInCurDir()
+  " If NERDTree is open in the current buffer
+  if (exists("t:NERDTreeBufName") && bufwinnr(t:NERDTreeBufName) != -1)
+    exe ":NERDTreeClose"
+  else
+    exe ":NERDTreeFind %"
+  endif
+endfunction
+map <leader>n :call NERDTreeToggleInCurDir()<CR>
 
 function UploadICAL()
    let source = bufname("")
@@ -354,9 +362,6 @@ map <silent> tw :GhcModTypeInsert<CR>
 map <silent> ts :GhcModSplitFunCase<CR>
 map <silent> tq :GhcModType<CR>
 map <silent> te :GhcModTypeClear<CR>
-
-" toggle nerdtree
-map <Leader>n :NERDTreeToggle<CR>
 
 " tabularize with haskell
 let g:haskell_tabular = 1
