@@ -4,8 +4,6 @@ call plug#begin('~/.vim/plug')
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'airblade/vim-gitgutter'
-Plug 'Shougo/vimproc'
-Plug 'eagletmt/ghcmod-vim'
 Plug 'scrooloose/nerdtree'
 Plug 'junegunn/tabularize'
 Plug 'tpope/vim-fugitive'
