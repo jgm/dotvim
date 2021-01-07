@@ -17,6 +17,7 @@ Plug 'jceb/vim-orgmode'
 Plug 'vim-scripts/loremipsum'
 Plug 'LaTeX-Box-Team/LaTeX-Box'
 Plug 'neovimhaskell/haskell-vim'
+" Plug 'itchyny/vim-haskell-indent'
 Plug 'junegunn/vim-easy-align'
 " Plug 'vim-pandoc/vim-pandoc'
 " Plug 'godlygeek/tabular'
@@ -287,6 +288,7 @@ let g:haskell_indent_let = 4
 let g:haskell_indent_after_bare_where = 1
 " where
 "   foo =
+let g:haskell_indent_do = 2
 let g:haskell_indent_guard = 2
 " f x y
 "   |
@@ -337,6 +339,7 @@ endfunction
 " Plugin settings
 
 " gitgutter
+let g:gitgutter_enabled=0
 set updatetime=250
 " bindings:
 nmap ]h <Plug>GitGutterNextHunk
