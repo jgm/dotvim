@@ -391,3 +391,7 @@ xmap ga <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
 
+if has('nvim')
+" nvim only stuff here
+endif
+
