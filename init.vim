@@ -8,7 +8,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'junegunn/tabularize'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
-Plug 'mileszs/ack.vim'
+" Plug 'mileszs/ack.vim'
 " Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'mbbill/undotree'
 Plug 'kien/ctrlp.vim'
@@ -23,6 +23,10 @@ Plug 'junegunn/vim-easy-align'
 " Plug 'godlygeek/tabular'
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
+Plug 'vimwiki/vimwiki'
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
+Plug 'michal-h21/vim-zettel'
 
 " initialize plugins
 call plug#end()
@@ -207,6 +211,8 @@ let g:vim_markdown_folding_disabled = 1
 let g:vim_markdown_math = 1
 let g:vim_markdown_frontmatter = 1
 let g:vim_markdown_strikethrough = 1
+
+let g:zettel_fzf_command = 'rg'
 
 hi htmlItalic             gui=underline cterm=underline
 
