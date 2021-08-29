@@ -4,7 +4,7 @@ call plug#begin('~/.vim/plug')
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'airblade/vim-gitgutter'
-Plug 'scrooloose/nerdtree'
+" Plug 'scrooloose/nerdtree'
 Plug 'junegunn/tabularize'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
@@ -22,7 +22,8 @@ Plug 'junegunn/vim-easy-align'
 " Plug 'vim-pandoc/vim-pandoc'
 " Plug 'godlygeek/tabular'
 Plug 'godlygeek/tabular'
-Plug 'plasticboy/vim-markdown'
+" Plug 'plasticboy/vim-markdown'
+" Plug 'masukomi/vim-markdown-folding'
 Plug 'vimwiki/vimwiki'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
@@ -191,6 +192,7 @@ noremap <leader>b <C-O>
 autocmd FileType text setlocal textwidth=64
 autocmd FileType tex setlocal textwidth=64
 autocmd FileType markdown setlocal textwidth=64
+autocmd FileType vimwiki setlocal foldlevel=99
 
 " When editing a file, always jump to the last known cursor position. Don't
 " do it when the position is invalid or when inside an event handler (happens
@@ -212,7 +214,9 @@ let g:vim_markdown_math = 1
 let g:vim_markdown_frontmatter = 1
 let g:vim_markdown_strikethrough = 1
 
-let g:zettel_fzf_command = 'rg'
+let g:zettel_fzf_command = 'ls *.md'
+" use [[Page]] for links instead of [Page](Page)
+let g:zettel_link_format="[[%title]]"
 
 hi htmlItalic             gui=underline cterm=underline
 
@@ -397,6 +401,12 @@ xmap ga <Plug>(EasyAlign)
 
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
+
+" fold markdown headings in vimwiki
+let g:vimwiki_folding = 'expr'
+augroup vimwiki
+  noremap <leader><leader> za
+augroup END
 
 if has('nvim')
 " nvim only stuff here
