@@ -245,7 +245,8 @@ if has("gui_running")
   set lines=40
   set mousehide " hide the mouse cursor when typing
 else
-  colorscheme zellner
+  set background=light
+  colorscheme onehalflight " polar github shirotelin onehalflight PaperColor zellner
 endif
 
 " NERD_tree (file browser)
