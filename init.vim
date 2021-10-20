@@ -244,6 +244,8 @@ if has("gui_running")
   "              +  use GUI tabs, not console style tabs
   set lines=40
   set mousehide " hide the mouse cursor when typing
+else
+  colorscheme zellner
 endif
 
 " NERD_tree (file browser)
