@@ -77,6 +77,11 @@ set ruler
 " Show trailing whitespace, tabs
 "highlight TabChar ctermbg=yellow guibg=yellow
 highlight ExtraWhitespace ctermbg=Gray guibg=Gray
+
+" Highlight PmenuThumb with readable background
+highlight PMenu ctermbg=gray
+highlight PMenuThumb ctermbg=gray
+
 "match TabChar /\t\+/
 match ExtraWhitespace /\s\+$/
 
@@ -238,15 +243,12 @@ if has("gui_running")
   set columns=80
   set lsp=3 " line spacing
   set guifont=DejaVu\ Sans\ Mono\ 10  " set in ~/.vimrc
-  set guioptions=ce 
+  set guioptions=ce
   "              ||
   "              |+-- use simple dialogs rather than pop-ups
   "              +  use GUI tabs, not console style tabs
   set lines=40
   set mousehide " hide the mouse cursor when typing
-else
-  set background=light
-  colorscheme onehalflight " polar github shirotelin onehalflight PaperColor zellner
 endif
 
 " NERD_tree (file browser)
