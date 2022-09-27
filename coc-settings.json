@@ -1,4 +1,7 @@
 {
+    "suggest.enablePreselect": false,
+    "suggest.noselect": true,
+    "suggest.autoTrigger": "trigger",
     "languageserver": {
         "haskell": {
             "command": "haskell-language-server-wrapper",
