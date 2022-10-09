@@ -329,7 +329,6 @@ if &diff
    colorscheme desert256
 endif
 
-
 "-----------------------------------------------------------------------
 " Custom digraphs
 
@@ -406,6 +405,11 @@ augroup vimwiki
 augroup END
 
 " CoC config
+
+" Fix colors in terminal
+hi Pmenu ctermfg=Black ctermbg=White
+hi PmenuSel ctermfg=Black ctermbg=Yellow
+hi FgCocErrorFloatBgCocFloating ctermfg=Black ctermbg=White guifg=White guibg=Black
 
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.
