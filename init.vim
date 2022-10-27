@@ -19,12 +19,12 @@ Plug 'godlygeek/tabular'
 Plug 'vimwiki/vimwiki'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
+"Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope.nvim', { 'branch': 'release'}
 Plug 'MrcJkb/haskell-tools.nvim'
-
-" Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " initialize plugins
 call plug#end()
@@ -414,6 +414,7 @@ augroup END
 
 if has('nvim')
 " nvim only stuff here
-  lua require('./haskell-tools-setup')
+  lua require('haskell-tools-setup')
+  lua require('telescope-setup')
 endif
 
