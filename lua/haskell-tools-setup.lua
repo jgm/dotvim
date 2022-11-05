@@ -18,7 +18,7 @@ vim.diagnostic.config({
 vim.api.nvim_set_keymap('n', '<leader>do', '<cmd>lua vim.diagnostic.open_float()<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>d[', '<cmd>lua vim.diagnostic.goto_prev()<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>d]', '<cmd>lua vim.diagnostic.goto_next()<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>dt', '<cmd>Telescope diagnostics<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>de', '<cmd>Telescope diagnostics<CR>', { noremap = true, silent = true })
 
 local opts = { noremap = true, silent = true, buffer = bufnr }
 ht.setup {
