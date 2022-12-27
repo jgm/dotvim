@@ -415,6 +415,7 @@ augroup END
 if has('nvim')
 " nvim only stuff here
   lua require('haskell-tools-setup')
+  lua require('typescript-setup')
   lua require('telescope-setup')
 endif
 
