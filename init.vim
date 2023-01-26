@@ -23,8 +23,8 @@ Plug 'junegunn/fzf.vim'
 
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim', { 'branch': 'release'}
-Plug 'MrcJkb/haskell-tools.nvim'
+Plug 'nvim-telescope/telescope.nvim', { 'branch': 'master'}
+Plug 'MrcJkb/haskell-tools.nvim', { 'branch': '1.x.x' }
 
 " initialize plugins
 call plug#end()
